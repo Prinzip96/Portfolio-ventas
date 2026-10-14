@@ -197,12 +197,12 @@ function start() {
     hh = Math.tan(THREE.MathUtils.degToRad(16)) * 10; hw = hh * camera.aspect;
     renderer.setSize(vw, vh, false);
     const pr = renderer.getPixelRatio(); rt.setSize(Math.round(vw * pr), Math.round(vh * pr)); post.material.uniforms.px.value = 3 * pr;
-    L.fit = Math.min(1, (hw * 2 * (mobile ? .56 : .3)) / 2.8, (hh * 2 * (mobile ? .4 : .52)) / 3);
-    L.R = mobile ? Math.min(2.1, hw * 1.15) : Math.min(3.5, hw * .7);
-    L.s = mobile ? Math.min(.46, hw * .38 / 1.1) : Math.min(.66, hw * .18);
-    L.y = mobile ? -.18 : .28; L.jy = mobile ? .32 : 0; // anillo más alto: deja hueco sobre la placa
-    L.hx = mobile ? hw * .42 : Math.min(2.2, hw * .3); L.hy = mobile ? hh * .6 : 0; L.hs = mobile ? .5 : 1;
-    camera.lookAt(0, mobile ? .25 : .2, 0);
+    L.fit = Math.min(1, (hw * 2 * (mobile ? .5 : .3)) / 2.8, (hh * 2 * (mobile ? .36 : .52)) / 3);
+    L.R = mobile ? Math.min(2.55, hw * 1.45) : Math.min(3.5, hw * .7);
+    L.s = mobile ? Math.min(.3, hw * .26 / 1.1) : Math.min(.66, hw * .18);
+    L.y = mobile ? -.42 : .28; L.jy = mobile ? .38 : 0; // móvil: anillo bajo y abierto, J arriba — sin atravesar
+    L.hx = mobile ? hw * .38 : Math.min(2.2, hw * .3); L.hy = mobile ? hh * .78 : 0; L.hs = mobile ? .38 : 1;
+    camera.lookAt(0, mobile ? .15 : .2, 0);
     top = wrap.offsetTop; span = Math.max(1, wrap.offsetHeight - vh);
   }
   addEventListener('resize', measure); addEventListener('load', measure);

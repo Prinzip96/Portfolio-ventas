@@ -2,9 +2,7 @@ node_modules
 .git
 .DS_Store
 *.log
-src
 tools
-railway.toml
 _debug*
 assets/j06-render-antiguo.png
 assets/j06-render-antiguo.webp

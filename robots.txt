@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://portfolio-ventas.vercel.app/sitemap.xml
+Sitemap: https://estudiojota.es/sitemap.xml

@@ -2497,7 +2497,7 @@ body.chat-open {
 /* ——— Footer ——— */
 .footer {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr auto;
+  grid-template-columns: 2fr 1fr 1fr 1fr auto;
   align-items: start;
   gap: 32px;
   padding: 40px var(--pad) 44px;

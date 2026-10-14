@@ -72,6 +72,8 @@
     const mailIn = document.getElementById("chatMail");
     const more = document.getElementById("chatMore");
     const honey = document.getElementById("chatHoney");
+    const captchaIn = document.getElementById("chatCaptcha");
+    const captchaQ = document.getElementById("captchaQ");
     const sendBtn = document.getElementById("chatSend");
     const statusEl = document.getElementById("chatStatus");
     const sendLabel = sendBtn?.querySelector("[data-label]");
@@ -79,7 +81,16 @@
     let step = 0;
     let opener = null;
     let sending = false;
+    let captchaAns = 0;
     const pad = (n) => String(n).padStart(2, "0");
+
+    const rollCaptcha = () => {
+      const a = 2 + Math.floor(Math.random() * 8);
+      const b = 1 + Math.floor(Math.random() * 8);
+      captchaAns = a + b;
+      if (captchaQ) captchaQ.textContent = `${a} + ${b}`;
+      if (captchaIn) captchaIn.value = "";
+    };
 
     const show = (i) => {
       step = Math.min(Math.max(i, 0), steps.length - 1);
@@ -89,6 +100,7 @@
       prev.hidden = step === 0;
       if (step === steps.length - 1) {
         sum.innerHTML = `Quieres <b>${answers[1]}</b>, <b>${answers[2]}</b>, y <b>${answers[3]}</b>.`;
+        rollCaptcha();
         setTimeout(() => who.focus(), 320);
       }
     };
@@ -150,6 +162,13 @@
       const extra = more.value.trim();
       if (!name) { who.focus(); return; }
       if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { mailIn?.focus(); return; }
+      const captchaVal = Number(String(captchaIn?.value || "").trim());
+      if (!Number.isFinite(captchaVal) || captchaVal !== captchaAns) {
+        setStatus("El captcha no cuadra. Prueba otra vez.", "err");
+        rollCaptcha();
+        captchaIn?.focus();
+        return;
+      }
       if (!answers[1] || !answers[2] || !answers[3]) {
         setStatus("Vuelve atrás y elige las tres opciones.", "err");
         return;
@@ -203,6 +222,7 @@
           "ok"
         );
         form.reset();
+        rollCaptcha();
       } catch (err) {
         if (sendLabel) sendLabel.textContent = "Enviar";
         sendBtn.disabled = false;
@@ -284,5 +304,23 @@
         { passive: true }
       );
     });
+  });
+
+  /* ——— Aviso de cookies (preferencia técnica) ——— */
+  const cookieBar = document.getElementById("cookieBar");
+  const cookieOk = document.getElementById("cookieOk");
+  const COOKIE_KEY = "ej_cookie_ok";
+  try {
+    if (cookieBar && !localStorage.getItem(COOKIE_KEY)) {
+      cookieBar.hidden = false;
+    }
+  } catch (_) {
+    if (cookieBar) cookieBar.hidden = false;
+  }
+  cookieOk?.addEventListener("click", () => {
+    try {
+      localStorage.setItem(COOKIE_KEY, "1");
+    } catch (_) {}
+    if (cookieBar) cookieBar.hidden = true;
   });
 })();

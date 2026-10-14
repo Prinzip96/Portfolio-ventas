@@ -1,0 +1,94 @@
+/* Páginas legales · mismo sistema visual que la web de venta */
+:root {
+  --bg: #0a0a0a;
+  --bg-soft: #101011;
+  --fg: #f4f2ee;
+  --muted: rgba(244, 242, 238, 0.55);
+  --line: rgba(244, 242, 238, 0.14);
+  --accent: #bcff4d;
+  --pad: clamp(20px, 5vw, 80px);
+  --font-display: "Instrument Serif", Georgia, serif;
+  --font-ui: Inter, system-ui, sans-serif;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.legal-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px var(--pad);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  background: rgba(10, 10, 10, 0.92);
+  backdrop-filter: blur(12px);
+  z-index: 10;
+}
+.legal-brand {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--fg);
+  text-decoration: none;
+}
+.legal-brand:hover { text-decoration: none; color: var(--accent); }
+.legal-brand sup { font-size: 0.55em; }
+.legal-back { font-size: 14px; font-weight: 500; }
+
+.legal-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(40px, 6vw, 80px) var(--pad) clamp(64px, 8vw, 120px);
+}
+.legal-wrap h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+}
+.legal-meta {
+  margin: 0 0 clamp(36px, 5vw, 56px);
+  color: var(--muted);
+  font-size: 14px;
+}
+.legal-wrap h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.15;
+  margin: 2.2em 0 0.6em;
+}
+.legal-wrap p, .legal-wrap li { color: rgba(244, 242, 238, 0.82); }
+.legal-wrap ul { padding-left: 1.2em; margin: 0.6em 0 1.2em; }
+.legal-wrap li { margin: 0.35em 0; }
+.legal-wrap strong { color: var(--fg); font-weight: 500; }
+
+.legal-foot {
+  border-top: 1px solid var(--line);
+  padding: 28px var(--pad) 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.legal-foot a { color: var(--muted); }
+.legal-foot a:hover { color: var(--accent); }

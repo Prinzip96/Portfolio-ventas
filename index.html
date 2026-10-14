@@ -8,12 +8,11 @@
   <title>Diseño web para negocios en Málaga y Andalucía · Jaime®</title>
   <meta name="description" content="Webs para negocios locales con precio cerrado. Primero ves tu boceto gratis y luego decides. Diseño y montaje en Málaga, en remoto para toda Andalucía." />
   <meta name="author" content="Jaime Sánchez · Estudio Jota" />
-  <!-- Tras el primer deploy en Vercel, cambia SITE por tu URL real (*.vercel.app o tu dominio). -->
-  <link rel="canonical" href="https://portfolio-ventas.vercel.app/" />
-  <meta property="og:url" content="https://portfolio-ventas.vercel.app/" />
+  <link rel="canonical" href="https://estudiojota.es/" />
+  <meta property="og:url" content="https://estudiojota.es/" />
   <meta property="og:title" content="Diseño web para negocios en Málaga y Andalucía · Jaime®" />
   <meta property="og:description" content="Webs para negocios locales con precio cerrado. Primero ves tu boceto gratis y luego decides." />
-  <meta property="og:image" content="https://portfolio-ventas.vercel.app/assets/og.jpg" />
+  <meta property="og:image" content="https://estudiojota.es/assets/og.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:type" content="website" />
@@ -22,9 +21,10 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Diseño web para negocios en Málaga y Andalucía · Jaime®" />
   <meta name="twitter:description" content="Webs para negocios locales con precio cerrado. Primero ves tu boceto gratis y luego decides." />
-  <meta name="twitter:image" content="https://portfolio-ventas.vercel.app/assets/og.jpg" />
+  <meta name="twitter:image" content="https://estudiojota.es/assets/og.jpg" />
   <meta name="geo.region" content="ES-AN" />
   <meta name="geo.placename" content="Málaga" />
+  <!-- Tras verificar en Search Console, pega aquí: <meta name="google-site-verification" content="…" /> -->
   <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
   <link rel="sitemap" type="application/xml" href="./sitemap.xml" />
   <script type="application/ld+json">
@@ -32,8 +32,8 @@
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "Jaime® · Estudio Jota",
-    "url": "https://portfolio-ventas.vercel.app/",
-    "image": "https://portfolio-ventas.vercel.app/assets/og.jpg",
+    "url": "https://estudiojota.es/",
+    "image": "https://estudiojota.es/assets/og.jpg",
     "email": "jaimesnchz9966@gmail.com",
     "description": "Diseño web para negocios locales en Málaga y Andalucía. Boceto gratis, precio cerrado.",
     "areaServed": ["Málaga", "Andalucía", "España"],
@@ -372,7 +372,12 @@
       <span class="label">Contacto</span>
       <a href="mailto:jaimesnchz9966@gmail.com">jaimesnchz9966@gmail.com</a>
       <a href="https://www.linkedin.com/in/jaime-sanchez-2835342b7/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <!-- TODO: añadir curriculum.pdf en la raíz cuando esté listo y reactivar el enlace -->
+    </div>
+    <div class="footer-col">
+      <span class="label">Legal</span>
+      <a href="./aviso-legal.html">Aviso legal</a>
+      <a href="./privacidad.html">Privacidad</a>
+      <a href="./cookies.html">Cookies</a>
     </div>
     <p class="footer-year">© 2026 Estudio Jota</p>
   </footer>
@@ -473,6 +478,11 @@
               <span>Algo más que deba saber</span>
               <textarea id="chatMore" name="message" rows="2" placeholder="Opcional: a qué te dedicas, ciudad, pack que te interesa"></textarea>
             </label>
+            <label class="field chat-captcha">
+              <span>Captcha · ¿Cuánto es <em id="captchaQ">?</em>?</span>
+              <input type="text" id="chatCaptcha" name="captcha" inputmode="numeric" autocomplete="off" required placeholder="Resultado" />
+            </label>
+            <p class="chat-legal">Al enviar aceptas la <a href="./privacidad.html" target="_blank" rel="noopener">privacidad</a>. No spam.</p>
             <button class="chat-send" type="submit" id="chatSend">
               <span data-label>Enviar</span>
               <span class="arr">→</span>
@@ -482,6 +492,11 @@
         </section>
       </div>
     </div>
+  </div>
+
+  <div class="cookie-bar" id="cookieBar" hidden>
+    <p>Usamos una cookie técnica para recordar tu preferencia. <a href="./cookies.html">Más info</a> · <a href="./privacidad.html">Privacidad</a></p>
+    <button type="button" class="cookie-ok" id="cookieOk">Entendido</button>
   </div>
 
   <script src="./script.js" defer></script>

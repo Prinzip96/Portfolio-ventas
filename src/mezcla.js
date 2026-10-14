@@ -197,12 +197,12 @@ function start() {
     hh = Math.tan(THREE.MathUtils.degToRad(16)) * 10; hw = hh * camera.aspect;
     renderer.setSize(vw, vh, false);
     const pr = renderer.getPixelRatio(); rt.setSize(Math.round(vw * pr), Math.round(vh * pr)); post.material.uniforms.px.value = 3 * pr;
-    L.fit = Math.min(1, (hw * 2 * (mobile ? .5 : .3)) / 2.8, (hh * 2 * (mobile ? .36 : .52)) / 3);
-    L.R = mobile ? Math.min(2.55, hw * 1.45) : Math.min(3.5, hw * .7);
-    L.s = mobile ? Math.min(.3, hw * .26 / 1.1) : Math.min(.66, hw * .18);
-    L.y = mobile ? -.42 : .28; L.jy = mobile ? .38 : 0; // móvil: anillo bajo y abierto, J arriba — sin atravesar
-    L.hx = mobile ? hw * .38 : Math.min(2.2, hw * .3); L.hy = mobile ? hh * .78 : 0; L.hs = mobile ? .38 : 1;
-    camera.lookAt(0, mobile ? .15 : .2, 0);
+    L.fit = Math.min(1, (hw * 2 * (mobile ? .48 : .3)) / 2.8, (hh * 2 * (mobile ? .34 : .52)) / 3);
+    L.R = mobile ? Math.min(2.65, hw * 1.5) : Math.min(3.5, hw * .7);
+    L.s = mobile ? Math.min(.28, hw * .24 / 1.1) : Math.min(.66, hw * .18);
+    L.y = mobile ? -.32 : .28; L.jy = mobile ? .42 : 0; // móvil: J arriba, anillo abierto debajo
+    L.hx = mobile ? hw * .36 : Math.min(2.2, hw * .3); L.hy = mobile ? hh * .82 : 0; L.hs = mobile ? .34 : 1;
+    camera.lookAt(0, mobile ? .12 : .2, 0);
     top = wrap.offsetTop; span = Math.max(1, wrap.offsetHeight - vh);
   }
   addEventListener('resize', measure); addEventListener('load', measure);
@@ -258,6 +258,7 @@ function start() {
     heroEl.style.visibility = heroO < .01 ? 'hidden' : 'visible';
     const uiO = smooth(.2, .28, p);
     orbitUI.style.opacity = uiO.toFixed(3); orbitUI.classList.toggle('is-on', uiO > .5);
+    document.body.classList.toggle('orbit-focus', uiO > .5);
     smx = damp(smx, mx, 3, dt); smy = damp(smy, my, 3, dt);
     const m = REDUCED ? 0 : 1;
         const toC = 1 - ease(smooth(.03, .2, p));

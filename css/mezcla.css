@@ -20,7 +20,7 @@
 .orbit-pips { position: absolute; right: var(--pad); top: calc(112px + clamp(54px, 6vw, 96px) + 16px); display: flex; gap: 6px; list-style: none; }
 .orbit-pips li { width: 22px; height: 2px; background: var(--line); transition: width .4s var(--ease), background .4s ease; }
 .orbit-pips li.is-on { width: 40px; background: var(--accent); }
-.orbit-plate { position: absolute; left: 50%; bottom: clamp(20px, 3.4vw, 40px); transform: translateX(-50%); display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 22px; width: min(760px, calc(100vw - 2 * var(--pad))); padding: 16px 16px 16px 24px; border: 1px solid var(--line); border-radius: 999px; background: rgba(16,16,17,.72); backdrop-filter: blur(14px) saturate(1.2); -webkit-backdrop-filter: blur(14px) saturate(1.2); transition: border-color .4s ease; }
+.orbit-plate { position: absolute; left: 50%; bottom: clamp(12px, 2vw, 22px); transform: translateX(-50%); display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 22px; width: min(760px, calc(100vw - 2 * var(--pad))); padding: 16px 16px 16px 24px; border: 1px solid var(--line); border-radius: 999px; background: rgba(16,16,17,.72); backdrop-filter: blur(14px) saturate(1.2); -webkit-backdrop-filter: blur(14px) saturate(1.2); transition: border-color .4s ease; }
 .orbit-plate:hover { border-color: var(--accent); }
 .orbit-plate .case-index { font-size: 12px; color: var(--accent); letter-spacing: .08em; }
 .orbit-name { display: flex; flex-direction: column; gap: 2px; min-width: 0; }

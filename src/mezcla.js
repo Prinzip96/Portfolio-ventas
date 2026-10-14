@@ -200,7 +200,7 @@ function start() {
     L.fit = Math.min(1, (hw * 2 * (mobile ? .56 : .3)) / 2.8, (hh * 2 * (mobile ? .4 : .52)) / 3);
     L.R = mobile ? Math.min(2.1, hw * 1.15) : Math.min(3.5, hw * .7);
     L.s = mobile ? Math.min(.5, hw * .42 / 1.1) : Math.min(.74, hw * .2);
-    L.y = mobile ? -.62 : -.42; L.jy = mobile ? .32 : 0;
+    L.y = mobile ? -.38 : -.12; L.jy = mobile ? .32 : 0; // más arriba para no taparlas con la placa
     L.hx = mobile ? hw * .42 : Math.min(2.2, hw * .3); L.hy = mobile ? hh * .6 : 0; L.hs = mobile ? .5 : 1;
     top = wrap.offsetTop; span = Math.max(1, wrap.offsetHeight - vh);
   }

@@ -57,6 +57,7 @@
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./css/mezcla.css" />
   <link rel="stylesheet" href="./css/venta.css" />
+  <link rel="stylesheet" href="./css/chat.css" />
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -70,7 +71,7 @@
       <a href="#packs">Packs</a>
       <a href="#preguntas">Preguntas</a>
     </nav>
-    <a class="nav-cta nav-mail" data-mail href="mailto:jaimesnchz9966@gmail.com">Escríbeme <span class="arr">→</span></a>
+    <button class="nav-cta nav-mail" type="button" data-open-chat>Escríbeme <span class="arr">→</span></button>
   </header>
 
   <main>
@@ -101,9 +102,9 @@
               <span class="status">Aceptando bocetos este mes</span>
             </div>
             <div class="hero-actions">
-              <a class="hero-talk talk" data-mail href="mailto:jaimesnchz9966@gmail.com">
+              <button class="hero-talk talk" type="button" data-open-chat>
                 <span>Pídeme tu boceto gratis</span><span class="arr">→</span>
-              </a>
+              </button>
               <button class="hero-scroll" id="scrollBtn" type="button">
                 <span>Ver trabajos</span><span class="arr">↓</span>
               </button>
@@ -126,7 +127,7 @@
             <span class="orbit-go" id="ogo">Ver web <span class="arr">↗</span></span>
           </a>
           <p class="orbit-cta">¿Quieres ver cómo quedaría la tuya?
-            <a data-mail href="mailto:jaimesnchz9966@gmail.com">Pídeme tu boceto gratis <span class="arr">→</span></a></p>
+            <button type="button" data-open-chat class="link-like">Pídeme tu boceto gratis <span class="arr">→</span></button></p>
         </div>
         <noscript><p class="orbit-noscript">monarealestate.es · kwsolutions.es · desbloque.com · prinzip96.github.io/PHOBIA · prinzip96.github.io/Distrito-4</p></noscript>
       </div>
@@ -162,7 +163,7 @@
         </article>
       </div>
       <div class="vrow">
-        <a class="btn-lime" data-mail href="mailto:jaimesnchz9966@gmail.com">Empezar por el boceto <span class="arr">→</span></a>
+        <button class="btn-lime" type="button" data-open-chat>Empezar por el boceto <span class="arr">→</span></button>
       </div>
     </section>
 
@@ -184,7 +185,7 @@
             <li>Mapa y horario</li>
             <li>Publicación con tu dominio</li>
           </ul>
-          <a class="pack-btn" data-mail data-msg="Hola Jaime, quiero info del pack Escaparate. Mi negocio es: " href="mailto:jaimesnchz9966@gmail.com">Pídeme el boceto <span class="arr">→</span></a>
+          <button class="pack-btn" type="button" data-open-chat>Pídeme el boceto <span class="arr">→</span></button>
         </article>
         <article class="pack is-top reveal reveal-delay-1">
           <span class="pack-badge">Recomendado</span>
@@ -198,7 +199,7 @@
             <li>Formulario que llega a tu correo</li>
             <li>SEO básico para salir en Google con tu ciudad</li>
           </ul>
-          <a class="pack-btn" data-mail data-msg="Hola Jaime, quiero info del pack Web de negocio. Mi negocio es: " href="mailto:jaimesnchz9966@gmail.com">Pídeme el boceto <span class="arr">→</span></a>
+          <button class="pack-btn" type="button" data-open-chat>Pídeme el boceto <span class="arr">→</span></button>
         </article>
         <article class="pack reveal reveal-delay-2">
           <h3 class="pack-name">Reservas <span class="pack-slash">/</span> Tienda</h3>
@@ -214,7 +215,7 @@
             <li>Avisos por correo o WhatsApp</li>
             <li>Pruebo el flujo completo hasta que no se atasca</li>
           </ul>
-          <a class="pack-btn" data-mail data-msg="Hola Jaime, quiero info del pack Reservas / Tienda. Mi negocio es: " href="mailto:jaimesnchz9966@gmail.com">Pídeme el boceto <span class="arr">→</span></a>
+          <button class="pack-btn" type="button" data-open-chat>Pídeme el boceto <span class="arr">→</span></button>
         </article>
       </div>
       <p class="pack-note">Precios sin IVA. El dominio va a tu nombre y el mantenimiento es opcional: los dos te los detallo por escrito junto al precio cerrado.</p>
@@ -269,7 +270,7 @@
         </article>
       </div>
       <div class="vrow">
-        <a class="link-lime" data-mail data-msg="Hola Jaime, tengo una idea para algo a medida: " href="mailto:jaimesnchz9966@gmail.com">Cuéntame tu idea <span class="arr">→</span></a>
+        <button class="link-lime" type="button" data-open-chat>Cuéntame tu idea <span class="arr">→</span></button>
       </div>
     </section>
 
@@ -347,7 +348,7 @@
         <h2 class="final-title reveal">¿Vemos cómo<br />quedaría <em>la tuya</em>?</h2>
         <p class="final-text reveal reveal-delay-1">Escríbeme, cuéntame a qué te dedicas y te preparo un boceto gratis. Si te convence, hablamos. Si no, sin problema.</p>
         <div class="final-actions reveal reveal-delay-2">
-          <a class="btn-lime btn-big" data-mail href="mailto:jaimesnchz9966@gmail.com">Pídeme tu boceto gratis <span class="arr">→</span></a>
+          <button class="btn-lime btn-big" type="button" data-open-chat>Pídeme tu boceto gratis <span class="arr">→</span></button>
           <p class="final-mail">o directamente a <a href="mailto:jaimesnchz9966@gmail.com">jaimesnchz9966@gmail.com</a></p>
         </div>
       </div>
@@ -376,23 +377,113 @@
     <p class="footer-year">© 2026 Estudio Jota</p>
   </footer>
 
-  <a class="mail-float" id="mailFloat" data-mail href="mailto:jaimesnchz9966@gmail.com" aria-label="Pídeme tu boceto por correo">
-    <span>Escríbeme</span>
-    <span class="mail-tip">Pídeme tu boceto</span>
-  </a>
+  <button class="talk-float" id="talkFloat" type="button" data-open-chat aria-label="Pídeme tu boceto">
+    <span>Escríbeme</span><span class="arr">→</span>
+  </button>
 
-  <script>
-    /* Contacto por correo (mismo canal que el portfolio). */
-    window.CONTACT_MAIL = "jaimesnchz9966@gmail.com";
-    (function () {
-      var mail = window.CONTACT_MAIL;
-      var def = "Hola Jaime, quiero mi boceto gratis. Mi negocio es: ";
-      document.querySelectorAll("[data-mail]").forEach(function (a) {
-        var body = a.getAttribute("data-msg") || def;
-        a.href = "mailto:" + mail + "?subject=" + encodeURIComponent("Boceto gratis") + "&body=" + encodeURIComponent(body);
-      });
-    })();
-  </script>
+  <!-- Flujo de contacto (mismo que el portfolio) -->
+  <div class="chat" id="chat" role="dialog" aria-modal="true" aria-label="Contacto" hidden>
+    <div class="chat-back-drop" data-close-chat></div>
+    <div class="chat-panel">
+      <header class="chat-top">
+        <button class="chat-prev" type="button" id="chatPrev" hidden>← Atrás</button>
+        <span class="chat-count" id="chatCount">01 / 04</span>
+        <button class="chat-x" type="button" data-close-chat aria-label="Cerrar">✕</button>
+      </header>
+      <div class="chat-bar"><span id="chatBar"></span></div>
+      <div class="chat-body">
+        <section class="chat-q is-on" data-q="1">
+          <span class="chat-tag">Pregunta 01</span>
+          <h3>¿Qué necesitas?</h3>
+          <div class="chat-picks">
+            <button class="pick" type="button" data-group="1" data-value="una web nueva desde cero">
+              <span class="pick-name">Una web nueva</span>
+              <span class="pick-desc">No tengo nada, o lo que tengo no sirve.</span>
+              <span class="pick-stat">Diseño + montaje</span>
+            </button>
+            <button class="pick" type="button" data-group="1" data-value="rediseñar la web que ya tengo">
+              <span class="pick-name">Rediseñar la mía</span>
+              <span class="pick-desc">Ya existe, pero se ha quedado vieja o no funciona.</span>
+              <span class="pick-stat">Revisión + rehacer</span>
+            </button>
+            <button class="pick" type="button" data-group="1" data-value="una app o panel a medida">
+              <span class="pick-name">App o panel</span>
+              <span class="pick-desc">Algo interno: control, reservas, WhatsApp, CRM…</span>
+              <span class="pick-stat">A medida</span>
+            </button>
+            <button class="pick" type="button" data-group="1" data-value="contenido y campañas con IA">
+              <span class="pick-name">Contenido con IA</span>
+              <span class="pick-desc">Imagen, vídeo o creatividades para anuncios.</span>
+              <span class="pick-stat">Campañas</span>
+            </button>
+          </div>
+        </section>
+        <section class="chat-q" data-q="2">
+          <span class="chat-tag">Pregunta 02</span>
+          <h3>¿Para qué lo vas a usar?</h3>
+          <div class="chat-picks">
+            <button class="pick" type="button" data-group="2" data-value="para enseñar lo que hago y que me escriban">
+              <span class="pick-name">Enseñar y que me escriban</span>
+              <span class="pick-desc">Una página que explique bien y acabe en contacto.</span>
+              <span class="pick-stat">Landing · Escaparate</span>
+            </button>
+            <button class="pick" type="button" data-group="2" data-value="para que la gente reserve o compre">
+              <span class="pick-name">Reservar o comprar</span>
+              <span class="pick-desc">La gente tiene que poder hacer algo ahí dentro.</span>
+              <span class="pick-stat">Reservas · Tienda</span>
+            </button>
+            <button class="pick" type="button" data-group="2" data-value="para el día a día de mi negocio">
+              <span class="pick-name">Uso interno</span>
+              <span class="pick-desc">Panel, automatización o herramienta del equipo.</span>
+              <span class="pick-stat">Ops</span>
+            </button>
+          </div>
+        </section>
+        <section class="chat-q" data-q="3">
+          <span class="chat-tag">Pregunta 03</span>
+          <h3>¿Con cuánta prisa?</h3>
+          <div class="chat-picks">
+            <button class="pick" type="button" data-group="3" data-value="hay una fecha y no se puede mover">
+              <span class="pick-name">Hay fecha</span>
+              <span class="pick-desc">Sale un día concreto y no se mueve.</span>
+              <span class="pick-stat">Ritmo rápido</span>
+            </button>
+            <button class="pick" type="button" data-group="3" data-value="sin fecha, prefiero que esté bien">
+              <span class="pick-name">Sin prisa</span>
+              <span class="pick-desc">Prefiero que esté bien antes que rápido.</span>
+              <span class="pick-stat">Más vueltas</span>
+            </button>
+          </div>
+        </section>
+        <section class="chat-q" data-q="4">
+          <span class="chat-tag">Último paso</span>
+          <h3>Dime quién eres y tu correo</h3>
+          <p class="chat-sum" id="chatSum"></p>
+          <form class="chat-form" id="chatForm" novalidate>
+            <input type="text" name="_gotcha" id="chatHoney" tabindex="-1" autocomplete="off" aria-hidden="true" class="chat-honey" />
+            <label class="field">
+              <span>Tu nombre</span>
+              <input type="text" id="chatWho" name="name" autocomplete="name" placeholder="Jaime" required />
+            </label>
+            <label class="field">
+              <span>Tu correo</span>
+              <input type="email" id="chatMail" name="email" autocomplete="email" placeholder="tu@email.com" required />
+            </label>
+            <label class="field">
+              <span>Algo más que deba saber</span>
+              <textarea id="chatMore" name="message" rows="2" placeholder="Opcional: a qué te dedicas, ciudad, pack que te interesa"></textarea>
+            </label>
+            <button class="chat-send" type="submit" id="chatSend">
+              <span data-label>Enviar</span>
+              <span class="arr">→</span>
+            </button>
+            <p class="chat-status" id="chatStatus" role="status" aria-live="polite" hidden></p>
+          </form>
+        </section>
+      </div>
+    </div>
+  </div>
+
   <script src="./script.js" defer></script>
   <script type="module" src="./js/app.js"></script>
 </body>

@@ -7,8 +7,17 @@
 
 /* nav */
 .nav-wa::before { display: none; }
+.nav-mail { font: inherit; cursor: pointer; }
 .nav-mail .arr { transition: transform .35s var(--ease); }
 .nav-mail:hover .arr { transform: translateX(3px); }
+button.btn-lime, button.pack-btn, button.link-lime, button.hero-talk {
+  font: inherit; cursor: pointer;
+}
+button.link-lime, button.hero-talk, button.pack-btn { background: transparent; }
+.link-like {
+  display: inline; padding: 0; border: 0; background: none; color: var(--accent); font: inherit; font-weight: 500;
+  border-bottom: 1px solid rgba(188,255,77,.4); cursor: pointer;
+}
 
 /* hero A */
 .jstage .hero-title { max-width: none; font-size: clamp(48px, 7.2vw, 122px); line-height: .95; margin-bottom: clamp(18px, 2vw, 28px); }

@@ -109,7 +109,7 @@ function start() {
   const P = [
     { key: 'mona', i: '01', name: 'Mona Real Estate', tags: 'Inmobiliaria · WordPress · Plugin a medida', year: '2026', desc: 'Web editable para que ellos mismos suban sus inmuebles, con un plugin hecho para su forma de trabajar.', url: 'https://monarealestate.es', ext: true, bar: 'monarealestate.es', go: 'Ver web' },
     { key: 'kw', i: '02', name: 'KW Solutions', tags: 'Web corporativa · WordPress editable', year: '2026', desc: 'Web de empresa que el cliente puede actualizar sin depender de nadie.', url: 'https://kwsolutions.es', ext: true, bar: 'kwsolutions.es', go: 'Ver web' },
-    { key: 'desbloque', i: '03', name: 'Desbloque', tags: 'Web', year: '2026', desc: '', url: 'https://desbloque.com', ext: true, bar: 'desbloque.com', go: 'Ver web' },
+    { key: 'desbloque', i: '03', name: 'Desbloque', tags: 'Proyecto de clase · Marketing', year: '2026', desc: 'Web de una agencia de marketing hecha en clase: estrategia, creatividad y datos.', url: 'https://desbloque.com', ext: true, bar: 'desbloque.com', go: 'Ver web' },
     { key: 'phobia', i: '04', name: 'Phobia', tags: 'Proyecto propio · Hostelería y eventos', year: '2025', desc: 'Proyecto propio para enseñar cómo podría ser la web de un local de ocio.', url: 'https://prinzip96.github.io/PHOBIA/index.html', ext: true, bar: 'prinzip96.github.io/PHOBIA', go: 'Ver web' },
     { key: 'distrito4', i: '05', name: 'Distrito 4', tags: 'Proyecto propio · Hostelería', year: '2025', desc: 'Proyecto propio de concepto para un local de hostelería.', url: 'https://prinzip96.github.io/Distrito-4/', ext: true, bar: 'prinzip96.github.io/Distrito-4', go: 'Ver web' },
   ];

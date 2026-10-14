@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="robots" content="index, follow" />
+  <title>Diseño web para negocios en Málaga y Andalucía · Jaime®</title>
+  <meta name="description" content="Webs para negocios locales con precio cerrado. Primero ves tu boceto gratis y luego decides. Diseño y montaje en Málaga, en remoto para toda Andalucía." />
+  <meta name="author" content="Jaime Sánchez · Estudio Jota" />
+  <!-- Tras el primer deploy en Vercel, cambia SITE por tu URL real (*.vercel.app o tu dominio). -->
+  <link rel="canonical" href="https://portfolio-ventas.vercel.app/" />
+  <meta property="og:url" content="https://portfolio-ventas.vercel.app/" />
+  <meta property="og:title" content="Diseño web para negocios en Málaga y Andalucía · Jaime®" />
+  <meta property="og:description" content="Webs para negocios locales con precio cerrado. Primero ves tu boceto gratis y luego decides." />
+  <meta property="og:image" content="https://portfolio-ventas.vercel.app/assets/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:site_name" content="Jaime® · Estudio Jota" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Diseño web para negocios en Málaga y Andalucía · Jaime®" />
+  <meta name="twitter:description" content="Webs para negocios locales con precio cerrado. Primero ves tu boceto gratis y luego decides." />
+  <meta name="twitter:image" content="https://portfolio-ventas.vercel.app/assets/og.jpg" />
+  <meta name="geo.region" content="ES-AN" />
+  <meta name="geo.placename" content="Málaga" />
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="sitemap" type="application/xml" href="./sitemap.xml" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Jaime® · Estudio Jota",
+    "url": "https://portfolio-ventas.vercel.app/",
+    "image": "https://portfolio-ventas.vercel.app/assets/og.jpg",
+    "email": "jaimesnchz9966@gmail.com",
+    "description": "Diseño web para negocios locales en Málaga y Andalucía. Boceto gratis, precio cerrado.",
+    "areaServed": ["Málaga", "Andalucía", "España"],
+    "priceRange": "€€",
+    "sameAs": [
+      "https://www.linkedin.com/in/jaime-sanchez-2835342b7/",
+      "https://github.com/Prinzip96"
+    ],
+    "founder": {
+      "@type": "Person",
+      "name": "Jaime Sánchez",
+      "email": "jaimesnchz9966@gmail.com"
+    }
+  }
+  </script>
+  <link rel="preload" href="./assets/fonts/InstrumentSerif-italic-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="./assets/fonts/InstrumentSerif-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="./assets/fonts/Inter-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="./assets/fonts/Inter-normal-500-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="./css/fonts.css" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./css/mezcla.css" />
+  <link rel="stylesheet" href="./css/venta.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <a class="nav-logo" href="#top">Jaime<sup>®</sup></a>
+    <nav class="nav-links" aria-label="Navegación principal">
+      <a href="#trabajos">Trabajos</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#packs">Packs</a>
+      <a href="#preguntas">Preguntas</a>
+    </nav>
+    <a class="nav-cta nav-mail" data-mail href="mailto:jaimesnchz9966@gmail.com">Escríbeme <span class="arr">→</span></a>
+  </header>
+
+  <main>
+    <!-- Escenario fijo: J06 cromada con destello + anillo 3D de trabajos -->
+    <div class="jstage-wrap" id="jstageWrap">
+      <span class="jstage-anchor" id="trabajos" aria-hidden="true"></span>
+      <div class="jstage" id="stage">
+        <canvas id="gl" aria-hidden="true"></canvas>
+
+        <section class="hero" id="top">
+          <h1 class="hero-title">
+            <span class="line"><span>Primero ves tu <em>boceto</em>.</span></span>
+            <span class="line"><span>Luego decides.</span></span>
+          </h1>
+          <p class="hero-sub">Diseño webs para negocios locales de Andalucía. Me cuentas a qué te dedicas, te preparo un boceto con tu marca y, si te convence, te doy un precio cerrado. Si no, no pagas nada.</p>
+
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <span class="label">Desde</span>
+              <span>Málaga · Trabajo en remoto para toda Andalucía</span>
+            </div>
+            <div class="hero-meta-item">
+              <span class="label">Hago</span>
+              <span>Webs para negocios locales</span>
+            </div>
+            <div class="hero-meta-item">
+              <span class="label">Estado</span>
+              <span class="status">Aceptando bocetos este mes</span>
+            </div>
+            <div class="hero-actions">
+              <a class="hero-talk talk" data-mail href="mailto:jaimesnchz9966@gmail.com">
+                <span>Pídeme tu boceto gratis</span><span class="arr">→</span>
+              </a>
+              <button class="hero-scroll" id="scrollBtn" type="button">
+                <span>Ver trabajos</span><span class="arr">↓</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <div class="orbit-ui" id="orbitUI" aria-live="polite">
+          <div class="orbit-head">
+            <h2 class="section-title">Trabajos</h2>
+            <p class="work-hint">Webs reales, hechas y montadas por mí.</p>
+            <p class="orbit-desc" id="odesc">Web editable para que ellos mismos suban sus inmuebles, con un plugin hecho para su forma de trabajar.</p>
+          </div>
+          <p class="orbit-count"><span id="ocount">01</span><span class="orbit-of">/ 05</span></p>
+          <ol class="orbit-pips" id="opips"><li></li><li></li><li></li><li></li><li></li></ol>
+          <a class="orbit-plate" id="oplate" href="https://monarealestate.es" target="_blank" rel="noopener noreferrer">
+            <span class="case-index" id="oindex">01</span>
+            <span class="orbit-name"><span class="case-name" id="oname">Mona Real Estate</span><span class="case-tags" id="otags">Inmobiliaria · WordPress · Plugin a medida</span></span>
+            <span class="case-year" id="oyear">2026</span>
+            <span class="orbit-go" id="ogo">Ver web <span class="arr">↗</span></span>
+          </a>
+          <p class="orbit-cta">¿Quieres ver cómo quedaría la tuya?
+            <a data-mail href="mailto:jaimesnchz9966@gmail.com">Pídeme tu boceto gratis <span class="arr">→</span></a></p>
+        </div>
+        <noscript><p class="orbit-noscript">monarealestate.es · kwsolutions.es · desbloque.com · prinzip96.github.io/PHOBIA · prinzip96.github.io/Distrito-4</p></noscript>
+      </div>
+    </div>
+
+    <div id="rest">
+    <!-- 3 · Cómo funciona -->
+    <section class="process" id="como-funciona">
+      <div class="vhead">
+        <h2 class="section-title">Cómo <em>funciona</em></h2>
+        <p class="vsub">Sin adelantos y sin letra pequeña. Primero lo ves.</p>
+      </div>
+      <div class="steps">
+        <article class="step reveal">
+          <span class="step-num">01</span>
+          <h3>Te hago un boceto gratis</h3>
+          <p>Me escribes, me cuentas a qué te dedicas y te preparo un boceto de tu web con tus colores y tu estilo. Sin compromiso.</p>
+        </article>
+        <article class="step reveal reveal-delay-1">
+          <span class="step-num">02</span>
+          <h3>Hablamos</h3>
+          <p>Si te gusta, vemos juntos qué necesitas: secciones, reservas, tienda… Y si no te convence, te lo quedas igual.</p>
+        </article>
+        <article class="step reveal reveal-delay-2">
+          <span class="step-num">03</span>
+          <h3>Precio cerrado</h3>
+          <p>Te paso un precio cerrado por escrito antes de empezar. Lo que pone es lo que pagas.</p>
+        </article>
+        <article class="step reveal reveal-delay-2">
+          <span class="step-num">04</span>
+          <h3>Tu web, lista</h3>
+          <p>La diseño, la monto, la pruebo en móvil y la publico con tu dominio. Te enseño a cambiar lo básico tú solo.</p>
+        </article>
+      </div>
+      <div class="vrow">
+        <a class="btn-lime" data-mail href="mailto:jaimesnchz9966@gmail.com">Empezar por el boceto <span class="arr">→</span></a>
+      </div>
+    </section>
+
+    <!-- 4 · Packs -->
+    <section class="packs" id="packs">
+      <div class="vhead">
+        <h2 class="section-title">Packs</h2>
+        <p class="vsub">Tres puntos de partida. Si lo tuyo no encaja en ninguno, lo vemos y te doy precio igual.</p>
+      </div>
+      <div class="pack-grid">
+        <article class="pack reveal">
+          <h3 class="pack-name">Escaparate</h3>
+          <p class="pack-for">Para que te encuentren y sepan quién eres.</p>
+          <p class="pack-price"><span class="pack-from">desde</span> 250&nbsp;€ <span class="pack-tax">sin IVA</span></p>
+          <ul class="pack-list">
+            <li>Web de una página (inicio, servicios, ubicación y contacto)</li>
+            <li>Diseño con tu marca, adaptado a móvil</li>
+            <li>Botón de WhatsApp y llamada directa</li>
+            <li>Mapa y horario</li>
+            <li>Publicación con tu dominio</li>
+          </ul>
+          <a class="pack-btn" data-mail data-msg="Hola Jaime, quiero info del pack Escaparate. Mi negocio es: " href="mailto:jaimesnchz9966@gmail.com">Pídeme el boceto <span class="arr">→</span></a>
+        </article>
+        <article class="pack is-top reveal reveal-delay-1">
+          <span class="pack-badge">Recomendado</span>
+          <h3 class="pack-name">Web de <em>negocio</em></h3>
+          <p class="pack-for">Para negocios que quieren explicar bien lo que hacen.</p>
+          <p class="pack-price"><span class="pack-from">desde</span> 450&nbsp;€ <span class="pack-tax">sin IVA</span></p>
+          <ul class="pack-list">
+            <li>Todo lo del Escaparate</li>
+            <li>Varias páginas (servicios, carta o catálogo, sobre nosotros, contacto)</li>
+            <li>WordPress editable: cambias textos y fotos tú solo</li>
+            <li>Formulario que llega a tu correo</li>
+            <li>SEO básico para salir en Google con tu ciudad</li>
+          </ul>
+          <a class="pack-btn" data-mail data-msg="Hola Jaime, quiero info del pack Web de negocio. Mi negocio es: " href="mailto:jaimesnchz9966@gmail.com">Pídeme el boceto <span class="arr">→</span></a>
+        </article>
+        <article class="pack reveal reveal-delay-2">
+          <h3 class="pack-name">Reservas <span class="pack-slash">/</span> Tienda</h3>
+          <p class="pack-for">Para cuando la web tiene que trabajar por ti.</p>
+          <div class="pack-price pack-price--two">
+            <p><span class="pack-what">Reservas</span><span class="pack-from">desde</span> 650&nbsp;€</p>
+            <p><span class="pack-what">Tienda</span><span class="pack-from">desde</span> 900&nbsp;€</p>
+            <span class="pack-tax">sin IVA</span>
+          </div>
+          <ul class="pack-list">
+            <li>Todo lo de Web de negocio</li>
+            <li>Reservas o citas online, o tienda con pagos</li>
+            <li>Avisos por correo o WhatsApp</li>
+            <li>Pruebo el flujo completo hasta que no se atasca</li>
+          </ul>
+          <a class="pack-btn" data-mail data-msg="Hola Jaime, quiero info del pack Reservas / Tienda. Mi negocio es: " href="mailto:jaimesnchz9966@gmail.com">Pídeme el boceto <span class="arr">→</span></a>
+        </article>
+      </div>
+      <p class="pack-note">Precios sin IVA. El dominio va a tu nombre y el mantenimiento es opcional: los dos te los detallo por escrito junto al precio cerrado.</p>
+    </section>
+
+    <!-- 5 · Precio cerrado, sin sorpresas -->
+    <section class="wave precio" id="precio">
+      <div class="wave-stage" id="waveStage"><canvas id="waveCanvas"></canvas></div>
+      <div class="wave-copy">
+        <p class="wave-line precio-line">Precio <em>cerrado</em>. Sin sorpresas.</p>
+        <p class="precio-text">Antes de empezar te paso por escrito qué incluye tu web y cuánto cuesta. Si a mitad de camino quieres añadir algo, te digo antes cuánto supone y tú decides. Nada de facturas que crecen solas.</p>
+      </div>
+    </section>
+    <section class="yesno">
+      <div class="yesno-col reveal">
+        <span class="label">Lo que sí</span>
+        <ul class="yn-list">
+          <li>Precio cerrado antes de empezar</li>
+          <li>Diseño y montaje yo</li>
+          <li>Boceto que puedes ver antes de pagar</li>
+          <li>No desaparezco al entregar</li>
+        </ul>
+      </div>
+      <div class="yesno-col reveal reveal-delay-1">
+        <span class="label">Lo que no</span>
+        <ul class="yn-list is-no">
+          <li>Plantillas con tu logo</li>
+          <li>Webs lentas y vacías</li>
+          <li>Hablarte en jerga técnica</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 6 · A medida -->
+    <section class="medida" id="a-medida">
+      <div class="vhead">
+        <h2 class="section-title">A <em>medida</em></h2>
+        <p class="vsub">Para cuando necesitas algo más que una web.</p>
+      </div>
+      <div class="medida-grid">
+        <article class="medida-item reveal">
+          <h3>Apps y paneles</h3>
+          <p>Paneles de control, zonas privadas y herramientas internas. No son plantillas: se montan para lo que necesitas tú.</p>
+        </article>
+        <article class="medida-item reveal reveal-delay-1">
+          <h3>Integraciones</h3>
+          <p>WhatsApp Business, correo y automatizaciones para que no se te pierda ningún cliente.</p>
+        </article>
+        <article class="medida-item reveal reveal-delay-2">
+          <h3>Contenido con IA</h3>
+          <p>Imagen y vídeo para tu web y tus anuncios, con variaciones para probar qué funciona. Como servicio suelto o dentro de tu web.</p>
+        </article>
+      </div>
+      <div class="vrow">
+        <a class="link-lime" data-mail data-msg="Hola Jaime, tengo una idea para algo a medida: " href="mailto:jaimesnchz9966@gmail.com">Cuéntame tu idea <span class="arr">→</span></a>
+      </div>
+    </section>
+
+    <!-- 7 · Sobre mí (sin cara: bola con dithering) -->
+    <section class="about" id="sobre-mi">
+      <div class="section-head">
+        <h2 class="section-title">Sobre mí</h2>
+      </div>
+      <p class="about-say reveal">
+        <span class="say"><span>Diseño y monto webs</span></span>
+        <span class="say"><span>que <em>ayudan a vender</em>.</span></span>
+      </p>
+      <div class="about-main">
+        <div class="dither reveal">
+          <div class="dither-stage" id="ditherStage"><canvas id="ditherCanvas"></canvas></div>
+        </div>
+        <div class="about-side reveal reveal-delay-1">
+          <span class="label">Quién soy</span>
+          <p class="about-now">Soy Jaime, de Málaga. Diseño y monto yo cada web, de principio a fin, así que hablas siempre con <em>la misma persona</em>.</p>
+          <p class="about-aside">Trabajo en Top Digital haciendo webs de Kit Digital, paneles internos y campañas, y en paralelo hago proyectos propios para negocios como Mona Real Estate.</p>
+          <p class="about-aside">Trabajo en remoto, así que me da igual que estés en Málaga, Córdoba o Huelva: lo hablamos por correo o por videollamada.</p>
+          <ul class="chips">
+            <li>WordPress</li><li>Kit Digital</li><li>GA4</li><li>Tag Manager</li><li>Reservas y pagos</li><li>Español e inglés</li>
+          </ul>
+        </div>
+      </div>
+      <div class="band" aria-hidden="true">
+        <div class="band-track">
+          <div class="band-set"><span>WordPress</span><i></i><em>Kit Digital</em><i></i><span>GA4 · Tag Manager</span><i></i><em>Reservas y pagos</em><i></i><span>Español e inglés</span><i></i></div>
+          <div class="band-set"><span>WordPress</span><i></i><em>Kit Digital</em><i></i><span>GA4 · Tag Manager</span><i></i><em>Reservas y pagos</em><i></i><span>Español e inglés</span><i></i></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 · Preguntas -->
+    <section class="faq" id="preguntas">
+      <div class="section-head">
+        <h2 class="section-title">Preguntas <em>frecuentes</em></h2>
+      </div>
+      <div class="acc-list" id="faqList">
+        <article class="acc reveal">
+          <button class="acc-head" type="button" aria-expanded="false"><span class="acc-title">¿Cuánto tarda?</span><span class="acc-icon" aria-hidden="true"></span></button>
+          <div class="acc-panel"><div class="acc-inner"><p>Depende del pack y de lo que necesites. Antes de empezar te doy una fecha de entrega por escrito, junto al precio cerrado.</p></div></div>
+        </article>
+        <article class="acc reveal">
+          <button class="acc-head" type="button" aria-expanded="false"><span class="acc-title">¿Qué necesito darte?</span><span class="acc-icon" aria-hidden="true"></span></button>
+          <div class="acc-panel"><div class="acc-inner"><p>Poca cosa: tu logo si lo tienes, fotos de tu negocio y una idea de lo que haces. Si te faltan textos, te ayudo a escribirlos.</p></div></div>
+        </article>
+        <article class="acc reveal">
+          <button class="acc-head" type="button" aria-expanded="false"><span class="acc-title">¿Y el dominio y el hosting?</span><span class="acc-icon" aria-hidden="true"></span></button>
+          <div class="acc-panel"><div class="acc-inner"><p>Me encargo yo de todo: te busco el dominio, lo contrato y dejo la web publicada. Antes te digo por escrito lo que cuesta. Queda a tu nombre.</p></div></div>
+        </article>
+        <article class="acc reveal">
+          <button class="acc-head" type="button" aria-expanded="false"><span class="acc-title">¿Puedo pedir cambios?</span><span class="acc-icon" aria-hidden="true"></span></button>
+          <div class="acc-panel"><div class="acc-inner"><p>Sí. En el boceto y en el diseño ajustamos lo que haga falta hasta que te guste. Cuando esté publicada, los textos y las fotos los puedes cambiar tú. Para cosas más grandes, te digo el precio antes.</p></div></div>
+        </article>
+        <article class="acc reveal">
+          <button class="acc-head" type="button" aria-expanded="false"><span class="acc-title">¿La web es mía?</span><span class="acc-icon" aria-hidden="true"></span></button>
+          <div class="acc-panel"><div class="acc-inner"><p>Sí, al 100&nbsp;%. El dominio, el contenido y la web son tuyos. Si un día quieres irte, te lo doy todo.</p></div></div>
+        </article>
+        <article class="acc reveal">
+          <button class="acc-head" type="button" aria-expanded="false"><span class="acc-title">¿Trabajas fuera de Málaga?</span><span class="acc-icon" aria-hidden="true"></span></button>
+          <div class="acc-panel"><div class="acc-inner"><p>Sí. Trabajo en remoto con negocios de toda Andalucía (y de fuera). Lo hacemos todo por correo o por videollamada.</p></div></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 9 · CTA final (J cromada de fondo) -->
+    <section class="final" id="contacto">
+      <picture>
+        <source srcset="./assets/j06.webp" type="image/webp" />
+        <img class="final-j" src="./assets/j06.png" alt="" width="1024" height="1024" loading="lazy" decoding="async" aria-hidden="true" />
+      </picture>
+      <div class="final-copy">
+        <h2 class="final-title reveal">¿Vemos cómo<br />quedaría <em>la tuya</em>?</h2>
+        <p class="final-text reveal reveal-delay-1">Escríbeme, cuéntame a qué te dedicas y te preparo un boceto gratis. Si te convence, hablamos. Si no, sin problema.</p>
+        <div class="final-actions reveal reveal-delay-2">
+          <a class="btn-lime btn-big" data-mail href="mailto:jaimesnchz9966@gmail.com">Pídeme tu boceto gratis <span class="arr">→</span></a>
+          <p class="final-mail">o directamente a <a href="mailto:jaimesnchz9966@gmail.com">jaimesnchz9966@gmail.com</a></p>
+        </div>
+      </div>
+    </section>
+    </div>
+  </main>
+
+  <footer class="footer" id="footer">
+    <div class="footer-brand">
+      <p class="footer-name">Jaime<sup>®</sup></p>
+      <p class="muted">Estudio Jota · Diseño web para negocios locales · Málaga</p>
+    </div>
+    <div class="footer-col">
+      <span class="label">Menú</span>
+      <a href="#trabajos">Trabajos</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#packs">Packs</a>
+      <a href="#preguntas">Preguntas</a>
+    </div>
+    <div class="footer-col">
+      <span class="label">Contacto</span>
+      <a href="mailto:jaimesnchz9966@gmail.com">jaimesnchz9966@gmail.com</a>
+      <a href="https://www.linkedin.com/in/jaime-sanchez-2835342b7/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <!-- TODO: añadir curriculum.pdf en la raíz cuando esté listo y reactivar el enlace -->
+    </div>
+    <p class="footer-year">© 2026 Estudio Jota</p>
+  </footer>
+
+  <a class="mail-float" id="mailFloat" data-mail href="mailto:jaimesnchz9966@gmail.com" aria-label="Pídeme tu boceto por correo">
+    <span>Escríbeme</span>
+    <span class="mail-tip">Pídeme tu boceto</span>
+  </a>
+
+  <script>
+    /* Contacto por correo (mismo canal que el portfolio). */
+    window.CONTACT_MAIL = "jaimesnchz9966@gmail.com";
+    (function () {
+      var mail = window.CONTACT_MAIL;
+      var def = "Hola Jaime, quiero mi boceto gratis. Mi negocio es: ";
+      document.querySelectorAll("[data-mail]").forEach(function (a) {
+        var body = a.getAttribute("data-msg") || def;
+        a.href = "mailto:" + mail + "?subject=" + encodeURIComponent("Boceto gratis") + "&body=" + encodeURIComponent(body);
+      });
+    })();
+  </script>
+  <script src="./script.js" defer></script>
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

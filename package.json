@@ -1,0 +1,21 @@
+{
+  "name": "jaime-venta",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Web de venta — Estudio Jota · Diseño web para negocios locales",
+  "scripts": {
+    "build": "esbuild src/app.js --bundle --minify --format=esm --target=es2020 --outdir=js --entry-names=app --splitting --chunk-names=chunk-[hash]",
+    "images": "node tools/webp.js",
+    "prestart": "npm run build",
+    "start": "serve -l tcp://0.0.0.0:$PORT .",
+    "serve": "npx --yes serve -l 8080 ."
+  },
+  "dependencies": {
+    "serve": "^14.2.5",
+    "three": "^0.186.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "sharp": "^0.33.5"
+  }
+}

@@ -14,6 +14,15 @@ button.btn-lime, button.pack-btn, button.link-lime, button.hero-talk {
   font: inherit; cursor: pointer;
 }
 button.link-lime, button.hero-talk, button.pack-btn { background: transparent; }
+button.link-lime {
+  border: 0;
+  border-bottom: 1px solid var(--accent);
+  border-radius: 0;
+  padding: 0 0 6px;
+  box-shadow: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
 .link-like {
   display: inline; padding: 0; border: 0; background: none; color: var(--accent); font: inherit; font-weight: 500;
   border-bottom: 1px solid rgba(188,255,77,.4); cursor: pointer;
@@ -43,7 +52,7 @@ button.link-lime, button.hero-talk, button.pack-btn { background: transparent; }
 .btn-lime:hover { background: var(--fg); }
 .btn-lime .arr, .link-lime .arr, .pack-btn .arr { transition: transform .35s var(--ease); }
 .btn-lime:hover .arr, .link-lime:hover .arr, .pack-btn:hover .arr { transform: translateX(4px); }
-.link-lime { display: inline-flex; gap: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--accent); color: var(--accent); font-family: var(--font-display); font-size: clamp(24px, 2.4vw, 34px); line-height: 1; }
+.link-lime { display: inline-flex; gap: 8px; padding-bottom: 6px; border: 0; border-bottom: 1px solid var(--accent); color: var(--accent); font-family: var(--font-display); font-size: clamp(24px, 2.4vw, 34px); line-height: 1; }
 
 /* cómo funciona */
 .process { border-top: 1px solid var(--line-soft); padding-top: clamp(64px, 8vw, 120px); }

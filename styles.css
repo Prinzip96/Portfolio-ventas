@@ -409,7 +409,7 @@ body.chat-open .talk-float {
   font-family: var(--font-display);
   font-weight: 400;
   font-size: clamp(50px, 11.5vw, 178px);
-  line-height: 0.92;
+  line-height: 1.05;
   letter-spacing: -0.02em;
   margin-bottom: clamp(40px, 7vw, 96px);
 }
@@ -435,6 +435,8 @@ body.chat-open .talk-float {
 .line {
   display: block;
   overflow: hidden;
+  padding-bottom: 0.18em; /* hueco para la g, y, p… (Instrument Serif) */
+  margin-bottom: -0.1em;
 }
 
 .line > span {

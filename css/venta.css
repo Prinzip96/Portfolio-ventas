@@ -20,7 +20,7 @@ button.link-lime, button.hero-talk, button.pack-btn { background: transparent; }
 }
 
 /* hero A */
-.jstage .hero-title { max-width: none; font-size: clamp(48px, 7.2vw, 122px); line-height: .95; margin-bottom: clamp(18px, 2vw, 28px); }
+.jstage .hero-title { max-width: none; font-size: clamp(48px, 7.2vw, 122px); line-height: 1.06; margin-bottom: clamp(18px, 2vw, 28px); }
 .jstage .hero-title em { color: var(--accent); }
 .hero-sub { position: relative; z-index: 2; max-width: 46ch; margin-bottom: clamp(30px, 4.4vw, 60px); font-size: clamp(15px, 1.2vw, 18px); line-height: 1.6; color: rgba(244,242,238,.78); text-shadow: 0 2px 20px rgba(10,10,10,.6); animation: fade-in 1s .5s var(--ease) both; }
 .hero-meta { grid-template-columns: repeat(3, minmax(0, 1fr)) auto; }

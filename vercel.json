@@ -4,6 +4,18 @@
   "installCommand": "npm install",
   "framework": null,
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/web-para-restaurantes",
+      "destination": "/diseno-web-malaga",
+      "permanent": true
+    },
+    {
+      "source": "/web-para-restaurantes/",
+      "destination": "/diseno-web-malaga",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

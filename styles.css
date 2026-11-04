@@ -231,6 +231,46 @@ sup {
   background: var(--fg);
 }
 
+.nav-logo,
+.nav-toggle,
+.nav-cta {
+  position: relative;
+  z-index: 70;
+}
+
+.nav-toggle {
+  display: none;
+  flex: none;
+  width: 42px;
+  height: 42px;
+  margin-left: auto;
+  padding: 0;
+  border: 1px solid rgba(244, 242, 238, 0.18);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex-direction: column;
+}
+.nav-toggle span {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  background: var(--fg);
+  transition: transform 0.35s var(--ease), opacity 0.25s;
+}
+.nav.is-open .nav-toggle span:first-child {
+  transform: translateY(3.25px) rotate(45deg);
+}
+.nav.is-open .nav-toggle span:last-child {
+  transform: translateY(-3.25px) rotate(-45deg);
+}
+body.nav-open {
+  overflow: hidden;
+}
+
 /* ——— Botones de contacto ——— */
 .hero-actions {
   justify-self: end;
@@ -3140,8 +3180,62 @@ body.chat-open {
     grid-column: 1;
   }
 
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .nav-cta {
+    order: 3;
+  }
+
+  .nav.is-open {
+    background: #0a0a0a;
+    border-bottom: 1px solid rgba(244, 242, 238, 0.08);
+  }
+
   .nav-links {
-    display: none;
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 55;
+    width: 100%;
+    height: 100dvh;
+    min-height: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 4px;
+    padding: 88px var(--pad) 40px;
+    margin: 0;
+    box-sizing: border-box;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    background: #0a0a0a;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.35s ease, visibility 0.35s;
+  }
+
+  .nav.is-open .nav-links {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .nav-links a {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 8vw, 40px);
+    line-height: 1.2;
+    color: var(--fg);
+    white-space: normal;
+    padding: 8px 0;
+  }
+
+  .nav-links a::after {
+    content: none;
   }
 
   .hero {

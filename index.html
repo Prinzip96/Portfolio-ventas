@@ -151,7 +151,7 @@
 
   <header class="nav" id="nav">
     <a class="nav-logo" href="#top">Jaime<sup>®</sup></a>
-    <nav class="nav-links" aria-label="Navegación principal">
+    <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
       <a href="./trabajos/">Trabajos</a>
       <a href="#como-funciona">Cómo funciona</a>
       <a href="./diseno-web-malaga/">Servicios</a>
@@ -159,6 +159,9 @@
       <a href="#preguntas">Preguntas</a>
       <a href="./blog/">Blog</a>
     </nav>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menú">
+      <span></span><span></span>
+    </button>
     <button class="nav-cta nav-mail" type="button" data-open-chat>Escríbeme <span class="arr">→</span></button>
   </header>
 
@@ -594,6 +597,7 @@
     <button type="button" class="cookie-ok" id="cookieOk">Entendido</button>
   </div>
 
+  <script src="./js/nav-mobile.js" defer></script>
   <script src="./script.js" defer></script>
   <script type="module" src="./js/app.js"></script>
   <script>

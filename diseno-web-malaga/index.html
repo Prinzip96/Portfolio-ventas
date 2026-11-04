@@ -131,7 +131,7 @@
 
   <header class="sv-nav" id="nav">
     <a class="sv-logo" href="../">Jaime<sup>®</sup></a>
-    <nav class="sv-links" aria-label="Navegación principal">
+    <nav class="sv-links" id="navLinks" aria-label="Navegación principal">
       <a href="/trabajos">Trabajos</a>
       <a href="../#como-funciona">Cómo funciona</a>
       <a href="/diseno-web-malaga" aria-current="page">Servicios</a>
@@ -139,6 +139,9 @@
       <a href="../#preguntas">Preguntas</a>
       <a href="../blog/">Blog</a>
     </nav>
+    <button class="sv-nav-toggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menú">
+      <span></span><span></span>
+    </button>
     <a class="sv-pill" href="mailto:hola@estudiojota.es">Escríbeme <span class="arr">→</span></a>
   </header>
 
@@ -614,5 +617,6 @@
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <script src="/js/nav-mobile.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,72 @@
+/* Footer único · todas las páginas */
+.footer {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr auto;
+  align-items: start;
+  gap: 32px;
+  padding: 40px var(--pad, clamp(20px, 5vw, 72px)) 44px;
+  font-size: 14px;
+  border-top: 1px solid var(--line, rgba(244, 242, 238, 0.12));
+  color: var(--fg, #f4f2ee);
+}
+
+.footer-name {
+  font-family: var(--font-display, var(--serif, Georgia, serif));
+  font-size: 22px;
+  margin: 0 0 4px;
+}
+
+.footer-tag {
+  margin: 0;
+  color: var(--muted, #8b8b86);
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted, #8b8b86);
+}
+
+.footer a {
+  color: var(--muted, #8b8b86);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: var(--fg, #f4f2ee);
+  text-decoration: none;
+}
+
+.footer-year {
+  margin: 0;
+  color: var(--muted, #8b8b86);
+  justify-self: end;
+}
+
+@media (max-width: 1000px) {
+  .footer {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-year {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+}

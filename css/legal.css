@@ -81,14 +81,3 @@ a:hover { text-decoration: underline; }
 .legal-wrap li { margin: 0.35em 0; }
 .legal-wrap strong { color: var(--fg); font-weight: 500; }
 
-.legal-foot {
-  border-top: 1px solid var(--line);
-  padding: 28px var(--pad) 40px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 28px;
-  font-size: 13px;
-  color: var(--muted);
-}
-.legal-foot a { color: var(--muted); }
-.legal-foot a:hover { color: var(--accent); }

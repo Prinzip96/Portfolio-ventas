@@ -2534,47 +2534,6 @@ body.chat-open {
   color: var(--fg);
 }
 
-/* ——— Footer ——— */
-.footer {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr auto;
-  align-items: start;
-  gap: 32px;
-  padding: 40px var(--pad) 44px;
-  font-size: 14px;
-  border-top: 1px solid var(--line);
-}
-
-.footer-name {
-  font-family: var(--font-display);
-  font-size: 22px;
-  margin-bottom: 4px;
-}
-
-.footer-col {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.footer-col .label {
-  margin-bottom: 4px;
-}
-
-.footer-col a {
-  color: var(--muted);
-  transition: color 0.3s ease;
-}
-
-.footer-col a:hover {
-  color: var(--fg);
-}
-
-.footer-year {
-  color: var(--muted);
-  justify-self: end;
-}
-
 /* ——— Custom cursor ——— */
 .cursor {
   position: fixed;
@@ -3138,13 +3097,6 @@ body.chat-open {
     gap: 36px;
   }
 
-  .footer {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .footer-year {
-    justify-self: start;
-  }
 }
 
 @media (max-width: 640px) {
@@ -3308,10 +3260,6 @@ body.chat-open {
     align-items: flex-start;
   }
 
-  .footer {
-    grid-template-columns: 1fr;
-    gap: 26px;
-  }
 }
 
 @media (pointer: coarse), (max-width: 900px) {

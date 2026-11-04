@@ -622,18 +622,6 @@ body.nav-open { overflow: hidden; }
 .js .sv-cta.in .scribble path,
 .sv-cta .scribble path { animation: sv-draw 1.2s 0.4s var(--ease) forwards; }
 
-/* ——— Footer ——— */
-.sv-foot {
-  display: grid; gap: 24px; padding: 40px var(--pad) 48px; border-top: 1px solid var(--line);
-  font-size: 14px; color: var(--muted);
-}
-@media (min-width: 900px) { .sv-foot { grid-template-columns: 1fr auto; align-items: end; } }
-.sv-foot .sv-logo { color: var(--fg); }
-.sv-foot p { margin-top: 10px; }
-.sv-foot nav { display: flex; flex-wrap: wrap; gap: 10px 22px; }
-.sv-foot nav a:hover { color: var(--fg); }
-.sv-foot-y { grid-column: 1 / -1; font-size: 13px; }
-
 /* ——— Movimiento reducido ——— */
 @media (prefers-reduced-motion: reduce) {
   .sv *, .sv *::before, .sv *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }

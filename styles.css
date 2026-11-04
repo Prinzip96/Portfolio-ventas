@@ -3180,19 +3180,19 @@ body.chat-open {
     grid-column: 1;
   }
 
-  .nav-toggle {
-    display: inline-flex;
-    order: 1;
-    margin-left: 0;
-  }
-
   .nav-logo {
-    order: 2;
+    order: 1;
   }
 
   .nav-cta {
-    order: 3;
+    order: 2;
     margin-left: auto;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+    order: 3;
+    margin-left: 0;
   }
 
   .nav.is-open {

@@ -1,7 +1,7 @@
 # Web de venta · Estudio Jota
 
 Sitio de captación para diseño web (negocios locales).  
-Dominio: [estudiojota.es](https://www.estudiojota.es) · Contacto: `jaimesnchz9966@gmail.com`
+Dominio: [estudiojota.es](https://www.estudiojota.es) · Contacto: `hola@estudiojota.es`
 
 Repo: [Prinzip96/Portfolio-ventas](https://github.com/Prinzip96/Portfolio-ventas)
 

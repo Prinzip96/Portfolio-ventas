@@ -60,7 +60,7 @@
   /* ——— Flujo de contacto (copiado del portfolio) ——— */
   const chat = document.getElementById("chat");
   if (chat) {
-    const MAIL = "jaimesnchz9966@gmail.com";
+    const MAIL = "hola@estudiojota.es";
     const steps = Array.from(chat.querySelectorAll(".chat-q"));
     const picks = Array.from(chat.querySelectorAll(".pick"));
     const count = document.getElementById("chatCount");

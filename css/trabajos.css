@@ -1,0 +1,96 @@
+/* ==========================================================================
+   Trabajos · se carga después de servicio.css
+   ========================================================================== */
+
+.tw-hero { padding: calc(clamp(36px, 5vw, 64px) + 80px) var(--pad) clamp(40px, 5vw, 64px); border-bottom: 1px solid var(--line); }
+.tw-hero h1 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(56px, 9vw, 140px); line-height: 0.92; letter-spacing: -0.03em;
+}
+.tw-hero p:not(.sv-eyebrow) { margin-top: 22px !important; max-width: 48ch; font-size: clamp(16px, 1.3vw, 19px); line-height: 1.6; color: rgba(244, 242, 238, 0.72); }
+
+.tw-grid { display: grid; gap: 14px; padding: clamp(40px, 5vw, 72px) var(--pad) clamp(72px, 10vw, 140px); }
+@media (min-width: 900px) { .tw-grid { grid-template-columns: 1fr 1fr; } }
+
+.tw-card {
+  display: flex; flex-direction: column; border-radius: 22px; overflow: hidden;
+  background: var(--bg-2); border: 1px solid var(--line);
+  transition: border-color 0.35s, transform 0.5s var(--ease);
+}
+.tw-card:hover { border-color: rgba(188, 255, 77, 0.35); transform: translateY(-4px); }
+.tw-card.is-wide { grid-column: 1 / -1; }
+@media (min-width: 900px) {
+  .tw-card.is-wide { display: grid; grid-template-columns: 1.35fr 1fr; }
+  .tw-card.is-wide .tw-card-body { justify-content: center; }
+}
+.tw-card-shot { position: relative; background: var(--bg); border-bottom: 1px solid var(--line); }
+@media (min-width: 900px) { .tw-card.is-wide .tw-card-shot { border-bottom: 0; border-right: 1px solid var(--line); } }
+.tw-card-bar { display: flex; align-items: center; gap: 6px; height: 34px; padding: 0 14px; border-bottom: 1px solid var(--line); }
+.tw-card-bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--bg-3); }
+.tw-card-bar span { margin-left: 12px; font-size: 12px; color: var(--muted); }
+.tw-card-shot img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
+.tw-card-body { display: flex; flex-direction: column; gap: 12px; padding: clamp(22px, 2.6vw, 36px); }
+.tw-card .k { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.tw-card h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 3.2vw, 44px); line-height: 1.02; }
+.tw-card p { font-size: 16px; line-height: 1.55; color: var(--muted); max-width: 42ch; }
+.tw-card .go { margin-top: auto; padding-top: 8px; color: var(--accent); font-weight: 500; }
+.tw-card.is-ext .go { color: var(--muted); }
+
+.tw-note {
+  margin: 0 var(--pad) clamp(56px, 7vw, 96px); max-width: 62ch;
+  font-size: 14px; color: var(--muted);
+}
+
+/* ——— Caso ——— */
+.cs-head { padding: calc(clamp(32px, 4vw, 56px) + 80px) var(--pad) clamp(28px, 3vw, 40px); }
+.cs-head-in { max-width: 1100px; margin-inline: auto; }
+.cs-back { display: inline-block; margin-bottom: 28px; font-size: 14px; color: var(--muted); transition: color 0.3s; }
+.cs-back:hover { color: var(--fg); }
+.cs-head h1 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(42px, 6.4vw, 92px); line-height: 0.98; letter-spacing: -0.025em; max-width: 14ch;
+}
+.cs-meta { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 22px; font-size: 14px; color: var(--muted); }
+.cs-meta span + span::before { content: "·"; margin-right: 22px; }
+
+.cs-shot {
+  max-width: 1100px; margin: 0 auto clamp(48px, 6vw, 80px); padding: 0 var(--pad);
+  box-sizing: content-box;
+}
+.cs-shot-frame { overflow: hidden; border-radius: 18px; border: 1px solid var(--line); background: var(--bg-2); }
+.cs-shot-frame img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
+
+.cs-body { max-width: 720px; margin-inline: auto; padding: 0 var(--pad) clamp(64px, 8vw, 110px); box-sizing: content-box; }
+.cs-lead {
+  margin-bottom: 40px !important; font-family: var(--serif);
+  font-size: clamp(24px, 2.4vw, 32px); line-height: 1.25;
+}
+.cs-grid { display: grid; gap: 28px; margin: 40px 0; }
+@media (min-width: 720px) { .cs-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+.cs-box { padding: 22px; border-radius: 16px; background: var(--bg-2); border: 1px solid var(--line); }
+.cs-box b { display: block; margin-bottom: 10px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.cs-box p { font-size: 15px; line-height: 1.55; color: rgba(244, 242, 238, 0.78); }
+.cs-body > p { font-size: 18px; line-height: 1.75; color: rgba(244, 242, 238, 0.82); }
+.cs-body > p + p { margin-top: 18px; }
+.cs-body h2 {
+  margin: 48px 0 16px; font-family: var(--serif); font-weight: 400;
+  font-size: clamp(28px, 3vw, 40px); line-height: 1.08;
+}
+.cs-body ul { display: grid; gap: 10px; margin: 18px 0; }
+.cs-body li { position: relative; padding-left: 26px; font-size: 17px; line-height: 1.55; color: rgba(244, 242, 238, 0.8); }
+.cs-body li::before { content: ""; position: absolute; left: 4px; top: 0.7em; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.cs-gap {
+  margin: 28px 0; padding: 18px 20px; border-radius: 14px; border: 1px dashed rgba(188, 255, 77, 0.35);
+  font-size: 14px; color: var(--muted);
+}
+.cs-gap strong { color: var(--accent); font-weight: 500; }
+.cs-actions { display: flex; flex-wrap: wrap; gap: 14px 22px; margin-top: 40px; align-items: center; }
+
+.cs-more { max-width: 720px; margin: 0 auto; padding: 0 var(--pad) clamp(72px, 9vw, 120px); box-sizing: content-box; }
+.cs-more h2 { margin-bottom: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.cs-more a {
+  display: flex; justify-content: space-between; gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--line);
+  font-family: var(--serif); font-size: clamp(22px, 2.2vw, 28px); line-height: 1.15; transition: color 0.3s;
+}
+.cs-more a::after { content: "→"; font-family: var(--sans); font-size: 18px; color: var(--muted); }
+.cs-more a:hover { color: var(--accent); }

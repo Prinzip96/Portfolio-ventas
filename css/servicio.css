@@ -98,8 +98,9 @@ body.nav-open { overflow: hidden; }
 
 @media (max-width: 640px) {
   .sv-nav { font-size: 13px; gap: 14px; }
-  .sv-nav-toggle { display: inline-flex; }
-  .sv-pill { order: 3; padding: 9px 14px; }
+  .sv-nav-toggle { display: inline-flex; order: 1; margin-left: 0; }
+  .sv-logo { order: 2; }
+  .sv-pill { order: 3; margin-left: auto; padding: 9px 14px; }
   .sv-nav.is-open {
     background: #0a0a0a;
     border-bottom-color: rgba(244, 242, 238, 0.08);

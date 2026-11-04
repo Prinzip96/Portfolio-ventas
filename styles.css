@@ -3182,10 +3182,17 @@ body.chat-open {
 
   .nav-toggle {
     display: inline-flex;
+    order: 1;
+    margin-left: 0;
+  }
+
+  .nav-logo {
+    order: 2;
   }
 
   .nav-cta {
     order: 3;
+    margin-left: auto;
   }
 
   .nav.is-open {

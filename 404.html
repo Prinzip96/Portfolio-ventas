@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="robots" content="noindex, follow" />
+  <title>Página no encontrada · Estudio Jota</title>
+  <meta name="description" content="Esta página no existe. Vuelve al inicio de Estudio Jota o mira los trabajos." />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="stylesheet" href="/css/fonts.css" />
+  <link rel="stylesheet" href="/css/legal.css" />
+  <style>
+    .err {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: clamp(64px, 12vw, 120px) var(--pad) 80px;
+    }
+    .err-code {
+      margin: 0 0 12px;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .err h1 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(40px, 8vw, 64px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0 0 16px;
+    }
+    .err p {
+      margin: 0 0 28px;
+      color: rgba(244, 242, 238, 0.82);
+      font-size: 17px;
+    }
+    .err-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 12px;
+    }
+    .err-links a {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .err-links a.primary {
+      background: var(--accent);
+      color: #0a0a0a;
+    }
+    .err-links a.primary:hover { text-decoration: none; background: var(--fg); }
+    .err-links a.ghost {
+      border: 1px solid var(--line);
+      color: var(--fg);
+    }
+    .err-links a.ghost:hover { border-color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <header class="legal-nav">
+    <a class="legal-brand" href="/">Jaime<sup>®</sup></a>
+    <a class="legal-back" href="/">← Inicio</a>
+  </header>
+  <main class="err">
+    <p class="err-code">Error 404</p>
+    <h1>Esta página no está.</h1>
+    <p>Puede que el enlace esté mal o que la hayamos movido. Elige por dónde seguir.</p>
+    <div class="err-links">
+      <a class="primary" href="/">Inicio</a>
+      <a class="ghost" href="/trabajos">Trabajos</a>
+      <a class="ghost" href="/#contacto">Contacto</a>
+    </div>
+  </main>
+</body>
+</html>

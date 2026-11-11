@@ -27,9 +27,9 @@ Canonical, OG, sitemap y robots ya apuntan a `https://www.estudiojota.es`.
 
 ## Legal
 
-- `/aviso-legal.html`
-- `/privacidad.html`
-- `/cookies.html`
+- `/aviso-legal`
+- `/privacidad`
+- `/cookies`
 
 Banner de cookies + captcha matemático en el formulario (además de honeypot). FormSubmit sigue con `_captcha: false` porque el anti-bot lo hacemos nosotros.
 

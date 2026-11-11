@@ -310,17 +310,20 @@
   const cookieBar = document.getElementById("cookieBar");
   const cookieOk = document.getElementById("cookieOk");
   const COOKIE_KEY = "ej_cookie_ok";
+  const setCookieBar = (open) => {
+    if (!cookieBar) return;
+    cookieBar.hidden = !open;
+    document.body.classList.toggle("has-cookie-bar", open);
+  };
   try {
-    if (cookieBar && !localStorage.getItem(COOKIE_KEY)) {
-      cookieBar.hidden = false;
-    }
+    setCookieBar(!localStorage.getItem(COOKIE_KEY));
   } catch (_) {
-    if (cookieBar) cookieBar.hidden = false;
+    setCookieBar(true);
   }
   cookieOk?.addEventListener("click", () => {
     try {
       localStorage.setItem(COOKIE_KEY, "1");
     } catch (_) {}
-    if (cookieBar) cookieBar.hidden = true;
+    setCookieBar(false);
   });
 })();

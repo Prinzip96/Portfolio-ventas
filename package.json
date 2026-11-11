@@ -5,7 +5,7 @@
   "description": "Web de venta — Estudio Jota · Diseño web para negocios locales",
   "scripts": {
     "footer": "node tools/inject-footer.js",
-    "build": "node tools/inject-footer.js && esbuild src/app.js --bundle --minify --format=esm --target=es2020 --outdir=js --entry-names=app --splitting --chunk-names=chunk-[hash]",
+    "build": "esbuild src/app.js --bundle --minify --format=esm --target=es2020 --outdir=js --entry-names=app --splitting --chunk-names=chunk-[hash]",
     "images": "node tools/webp.js",
     "prestart": "npm run build",
     "start": "serve -l tcp://0.0.0.0:$PORT .",

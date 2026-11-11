@@ -16,7 +16,8 @@ function showStaticJ() {
   pic.innerHTML =
     '<source srcset="./assets/j06.webp" type="image/webp" />' +
     '<img src="./assets/j06.png" alt="" width="1024" height="1024" decoding="async" />';
-  stage.appendChild(pic);
+  const hero = document.getElementById("top");
+  stage.insertBefore(pic, hero || stage.firstChild);
   window.__ready = Promise.resolve();
 }
 

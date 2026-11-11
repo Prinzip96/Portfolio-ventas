@@ -144,7 +144,8 @@
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./css/mezcla.css" />
   <link rel="stylesheet" href="./css/venta.css" />
-  <link rel="stylesheet" href="./css/chat.css" />
+  <link rel="stylesheet" href="./css/chat.css" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="./css/chat.css" /></noscript>
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -601,7 +602,7 @@
 
   <script src="./js/nav-mobile.js" defer></script>
   <script src="./script.js" defer></script>
-  <script type="module" src="./js/app.js"></script>
+  <script type="module" src="./js/app.js" defer></script>
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>

@@ -37,6 +37,10 @@
   });
 
   document.getElementById("scrollBtn")?.addEventListener("click", () => {
+    if (document.documentElement.classList.contains("j-static")) {
+      location.href = "./trabajos/";
+      return;
+    }
     document.getElementById("trabajos")?.scrollIntoView({
       behavior: reduceMotion ? "auto" : "smooth",
       block: "start",

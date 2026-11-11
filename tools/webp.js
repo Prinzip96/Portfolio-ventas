@@ -8,12 +8,12 @@ const sharp = require('sharp');
 
 const root = path.join(__dirname, '..');
 const jobs = [
-  { src: 'assets/shots/mona.jpg', out: 'assets/shots/mona.webp', q: 78 },
-  { src: 'assets/shots/kw.jpg', out: 'assets/shots/kw.webp', q: 78 },
-  { src: 'assets/shots/desbloque.jpg', out: 'assets/shots/desbloque.webp', q: 78 },
-  { src: 'assets/shots/phobia.jpg', out: 'assets/shots/phobia.webp', q: 78 },
-  { src: 'assets/shots/distrito4.jpg', out: 'assets/shots/distrito4.webp', q: 68, width: 1280 },
-  { src: 'assets/j06.png', out: 'assets/j06.webp', q: 82 },
+  { src: 'assets/shots/mona.jpg', out: 'assets/shots/mona.webp', q: 72, width: 960 },
+  { src: 'assets/shots/kw.jpg', out: 'assets/shots/kw.webp', q: 72, width: 960 },
+  { src: 'assets/shots/desbloque.jpg', out: 'assets/shots/desbloque.webp', q: 72, width: 960 },
+  { src: 'assets/shots/phobia.jpg', out: 'assets/shots/phobia.webp', q: 72, width: 960 },
+  { src: 'assets/shots/distrito4.jpg', out: 'assets/shots/distrito4.webp', q: 58, width: 800 },
+  { src: 'assets/j06.png', out: 'assets/j06.webp', q: 80 },
   // og.jpg se deja en JPEG: Facebook/LinkedIn lo leen mejor que WebP
 ];
 

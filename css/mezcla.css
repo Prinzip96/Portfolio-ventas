@@ -16,18 +16,18 @@
   pointer-events: none;
 }
 .j-static-img img { display: block; width: 100%; height: auto; filter: grayscale(.12) contrast(1.06); }
-html.j-static .jstage-wrap { height: auto; }
-html.j-static .jstage { position: relative; height: auto; min-height: 100svh; }
+html.j-flat .jstage-wrap { height: auto; }
+html.j-flat .jstage { position: relative; height: auto; min-height: 100svh; }
 html.j-static .orbit-ui { display: none; }
-html.j-static .jstage .hero { position: relative; min-height: 100svh; }
+html.j-flat .jstage .hero { position: relative; min-height: 100svh; }
 
 @media (max-width: 760px) {
-  html.j-static .jstage {
+  html.j-flat .jstage {
     display: flex;
     flex-direction: column;
     min-height: 100svh;
   }
-  html.j-static .j-static-img {
+  html.j-flat .j-static-img {
     position: relative;
     left: auto;
     top: auto;
@@ -36,17 +36,17 @@ html.j-static .jstage .hero { position: relative; min-height: 100svh; }
     margin: 78px auto 8px;
     flex: none;
   }
-  html.j-static .jstage .hero {
+  html.j-flat .jstage .hero {
     flex: 1;
     min-height: 0;
     justify-content: flex-start;
     padding: 8px var(--pad) max(24px, env(safe-area-inset-bottom));
   }
-  html.j-static .jstage .hero-title {
+  html.j-flat .jstage .hero-title {
     margin-bottom: 14px;
     font-size: clamp(36px, 10.5vw, 52px);
   }
-  html.j-static .jstage .hero-sub {
+  html.j-flat .jstage .hero-sub {
     margin-bottom: 16px;
   }
 }

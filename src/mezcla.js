@@ -206,6 +206,7 @@ function start() {
     top = wrap.offsetTop; span = Math.max(1, wrap.offsetHeight - vh);
   }
   addEventListener('resize', measure); addEventListener('load', measure);
+  if ('ResizeObserver' in window) new ResizeObserver(() => measure()).observe(wrap);
 
   /* ---- interfaz ---- */
   const oc = $('#ocount'), pips = $$('#opips li'), plate = $('#oplate');

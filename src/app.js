@@ -9,6 +9,8 @@ const light = reduce || mobile;
 function showStaticJ() {
   if (!stage || stage.querySelector(".j-static-img")) return;
   document.documentElement.classList.add("j-static");
+  // Sin j-flat el escenario ya ocupa su altura final: si cambiara al llegar el 3D, la página saltaría.
+  if (light) flattenStage();
   if (canvas) canvas.hidden = true;
   const pic = document.createElement("picture");
   pic.className = "j-static-img";
@@ -19,6 +21,10 @@ function showStaticJ() {
   const hero = document.getElementById("top");
   stage.insertBefore(pic, hero || stage.firstChild);
   window.__ready = Promise.resolve();
+}
+
+function flattenStage() {
+  document.documentElement.classList.add("j-flat");
 }
 
 function clearStaticJ() {
@@ -54,7 +60,7 @@ if (light) {
   bootRest();
 } else {
   const run = () => {
-    load3D().catch(() => {}).finally(bootRest);
+    load3D().catch(flattenStage).finally(bootRest);
   };
   if ("requestIdleCallback" in window) {
     requestIdleCallback(run, { timeout: 1600 });

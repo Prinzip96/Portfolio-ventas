@@ -5,13 +5,19 @@
   "description": "Web de venta — Estudio Jota · Diseño web para negocios locales",
   "scripts": {
     "footer": "node tools/inject-footer.js",
-    "build": "esbuild src/app.js --bundle --minify --format=esm --target=es2020 --outdir=js --entry-names=app --splitting --chunk-names=chunk-[hash]",
+    "build": "esbuild src/app.js --bundle --minify --format=esm --target=es2020 --outdir=js --entry-names=app --splitting --chunk-names=chunk-[hash] && npm run build:boceto",
+    "build:boceto": "esbuild api/_boceto/src/subida-navegador.js --bundle --minify --format=esm --platform=browser --target=es2020 --outfile=api/_boceto/public/js/subida.js",
+    "boceto": "node api/_boceto/src/server.js",
     "images": "node tools/webp.js",
     "prestart": "npm run build",
     "start": "serve -l tcp://0.0.0.0:$PORT .",
     "serve": "npx --yes serve -l 8080 ."
   },
   "dependencies": {
+    "@vercel/blob": "^2.9.0",
+    "busboy": "^1.6.0",
+    "express": "^5.3.0",
+    "nodemailer": "^10.6.0",
     "resend": "^6.39.0",
     "serve": "^14.2.5",
     "three": "^0.186.0"

@@ -5,6 +5,16 @@
   "framework": null,
   "cleanUrls": true,
   "trailingSlash": false,
+  "functions": {
+    "api/boceto.js": {
+      "includeFiles": "api/_boceto/public/**",
+      "maxDuration": 60
+    }
+  },
+  "rewrites": [
+    { "source": "/boceto", "destination": "/api/boceto" },
+    { "source": "/boceto/:path*", "destination": "/api/boceto" }
+  ],
   "redirects": [
     {
       "source": "/web-para-restaurantes",

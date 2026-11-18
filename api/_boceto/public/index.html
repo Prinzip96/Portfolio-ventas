@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="es" data-base="__BASE__" data-maxmb="__MAX_MB__" data-subida="__SUBIDA__">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Pide tu boceto a medida · Jaime® · Diseño web en Málaga</title>
+<meta name="description" content="Cuéntame qué necesitas, tus colores y tu estilo. Diseño tu boceto a mano y te lo mando a tu correo __PLAZO__.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="__BASE__/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="__BASE__/fonts/instrument-serif-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="__BASE__/fonts/instrument-serif-400i.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="__BASE__/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="__BASE__/css/app.css">
+</head>
+<body class="builder">
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"><span id="bar"></span></div>
+
+<header class="nav" id="nav">
+  <a class="nav-logo" href="__WEB__/">Jaime<sup>®</sup></a>
+  <nav class="nav-links" aria-label="Navegación principal">
+    <a href="__WEB__/trabajos">Trabajos</a><a href="__WEB__/#como-funciona">Cómo funciona</a><a href="__WEB__/diseno-web-malaga">Servicios</a><a href="__BASE__/" aria-current="page">Boceto</a><a href="__WEB__/blog">Blog</a>
+  </nav>
+  <a class="nav-cta" href="mailto:__CONTACTO__">Escríbeme <span class="arr">→</span></a>
+</header>
+
+<main class="app" id="app">
+  <section class="stage" id="stage" aria-label="Muestra rápida de colores y estilo">
+    <div class="stage-bar">
+      <span class="status">Muestra rápida</span>
+      <div class="seg" role="tablist" aria-label="Ver en">
+        <button type="button" class="on" data-device="desktop" role="tab" aria-selected="true">Escritorio</button>
+        <button type="button" data-device="mobile" role="tab" aria-selected="false">Móvil</button>
+      </div>
+    </div>
+    <div class="screens" id="screens" data-device="desktop">
+      <div class="frame-d">
+        <div class="chrome"><span></span><span></span><span></span><b id="url">tunegocio.es</b></div>
+        <div class="scroll" id="pd" tabindex="0" aria-label="Muestra en escritorio"></div>
+      </div>
+      <div class="frame-m">
+        <div class="notch"></div>
+        <div class="scroll" id="pm" tabindex="0" aria-label="Muestra en móvil"></div>
+      </div>
+      <span class="tag-boceto" aria-hidden="true">Muestra</span>
+      <span class="note" id="note" aria-hidden="true">tus colores, aquí ↓</span>
+    </div>
+    <p class="stage-note"><b>Es solo una muestra</b> con tus colores y tu estilo. Tu boceto de verdad lo diseño yo, a mano, y te llega __PLAZO__.</p>
+  </section>
+
+  <section class="panel" id="panel">
+    <div class="panel-top">
+      <button type="button" class="prev" id="back">← Atrás</button>
+      <span class="count" id="stepCount" aria-live="polite">01 / 06</span>
+    </div>
+    <div class="hair"><span id="hair"></span></div>
+
+    <form id="f" novalidate autocomplete="on">
+      <div class="step" data-step="1">
+        <span class="label">Boceto a medida · Sin compromiso</span>
+        <h1 class="title">Cuéntame tu web. Te hago el <em>boceto</em>.</h1>
+        <p class="sub">Seis preguntas cortas. Con lo que me cuentes, diseño tu boceto a mano y te lo mando a tu correo __PLAZO__.</p>
+        <span class="tag">Pregunta 01</span>
+        <h2 class="q">¿Qué necesitas?</h2>
+        <fieldset class="picks">
+          <legend class="sr">Tipo de proyecto</legend>
+          <label class="pick"><input type="radio" name="tipo" value="wordpress" checked>
+            <span class="pick-name">Web en WordPress</span><span class="pick-desc">Para cambiar tú mismo textos y fotos cuando quieras.</span><span class="pick-stat">Editable</span></label>
+          <label class="pick"><input type="radio" name="tipo" value="medida">
+            <span class="pick-name">Web a medida</span><span class="pick-desc">Diseño y código propios. Rápida y sin plantillas.</span><span class="pick-stat">Código propio</span></label>
+          <label class="pick"><input type="radio" name="tipo" value="app">
+            <span class="pick-name">App web</span><span class="pick-desc">Algo para el día a día: reservas, clientes, avisos…</span><span class="pick-stat">A medida</span></label>
+        </fieldset>
+      </div>
+
+      <div class="step" data-step="2" hidden>
+        <span class="tag">Pregunta 02</span>
+        <h2 class="q">Háblame de tu <em>negocio</em>.</h2>
+        <p class="sub">Con esto ya sé para quién diseño.</p>
+        <label class="field"><span>Nombre del negocio</span>
+          <input id="nombre" name="nombre" type="text" maxlength="40" placeholder="Casa Lola" autocomplete="organization" required></label>
+        <p class="err" id="err-negocio"></p>
+        <label class="field"><span>¿A qué te dedicas?</span>
+          <input id="sector" name="sector" type="text" maxlength="40" placeholder="Restaurante, clínica, gimnasio…"></label>
+        <div class="chips" id="chips" aria-label="Sectores habituales">
+          <button type="button">Restaurante</button><button type="button">Clínica</button><button type="button">Peluquería</button><button type="button">Gimnasio</button><button type="button">Tienda</button><button type="button">Hotel</button><button type="button">Asesoría</button><button type="button">Reformas</button>
+        </div>
+        <label class="field field-gap"><span>Ciudad o pueblo</span>
+          <input id="ciudad" name="ciudad" type="text" maxlength="60" placeholder="Málaga" autocomplete="address-level2" required></label>
+        <p class="err" id="err-ciudad"></p>
+        <label class="field"><span>Instagram o web actual · si tienes</span>
+          <input id="enlace" name="enlace" type="text" maxlength="200" placeholder="@tunegocio o tunegocio.es" autocapitalize="off" spellcheck="false"></label>
+      </div>
+
+      <div class="step" data-step="3" hidden>
+        <span class="tag">Pregunta 03</span>
+        <h2 class="q">¿Qué <em>colores</em> y qué estilo?</h2>
+        <p class="sub">Toca y mira la muestra de al lado. Es orientativa: el boceto de verdad lo hago a mano.</p>
+        <fieldset class="group"><legend>Paleta</legend><div class="palettes" id="palettes"></div></fieldset>
+        <fieldset class="group">
+          <legend>O los tuyos</legend>
+          <div class="pickers">
+            <label class="picker"><input type="color" id="c1" value="#0f4c5c"><span><b>Principal</b><code id="c1t">#0F4C5C</code></span></label>
+            <label class="picker"><input type="color" id="c2" value="#f28c38"><span><b>Acento</b><code id="c2t">#F28C38</code></span></label>
+          </div>
+          <div class="seg seg-wide" id="fondo" role="radiogroup" aria-label="Fondo">
+            <button type="button" data-v="claro" role="radio">Fondo claro</button><button type="button" data-v="crema" role="radio">Crema</button><button type="button" data-v="oscuro" role="radio">Oscuro</button>
+          </div>
+          <p class="hint" id="contrastHint" hidden>Con un color principal más oscuro, el texto de los botones se leerá mejor.</p>
+        </fieldset>
+        <fieldset class="group"><legend>Letra</legend><div class="cards" id="fonts"></div></fieldset>
+        <fieldset class="group"><legend>Estilo</legend><div class="cards cards-3" id="styles"></div></fieldset>
+        <fieldset class="group"><legend>¿Cómo quieres que se sienta? · hasta 3</legend><div class="chips chips-check" id="ambiente"></div></fieldset>
+        <label class="field"><span>Webs o cuentas que te gustan · opcional</span>
+          <textarea id="referencias" name="referencias" rows="2" maxlength="1000" placeholder="Enlaces, o qué te gusta de ellas. También lo que no quieres."></textarea></label>
+      </div>
+
+      <div class="step" data-step="4" hidden>
+        <span class="tag">Pregunta 04</span>
+        <h2 class="q">¿Qué <em>secciones</em> y para qué?</h2>
+        <p class="sub">Marca las que necesites. La portada va siempre.</p>
+        <fieldset class="sections" id="sections"><legend class="sr">Secciones</legend></fieldset>
+        <label class="field field-gap"><span>¿Alguna más? · opcional</span>
+          <input id="otras" name="otras" type="text" maxlength="200" placeholder="Tienda, blog, preguntas frecuentes…"></label>
+        <fieldset class="group"><legend>¿Qué quieres conseguir con la web?</legend><div class="chips chips-check" id="objetivos"></div></fieldset>
+        <label class="field"><span>Cuéntame más · opcional</span>
+          <textarea id="detalle" name="detalle" rows="3" maxlength="1500" placeholder="Qué te falla hoy, qué te gustaría que pasara, a quién quieres llegar…"></textarea></label>
+      </div>
+
+      <div class="step" data-step="5" hidden>
+        <span class="tag">Pregunta 05 · Opcional</span>
+        <h2 class="q">¿Tienes <em>logo</em> y fotos?</h2>
+        <p class="sub">Me ayudan a que el boceto se parezca a ti desde el principio. Si no tienes, lo dejo preparado para ponerlas después.</p>
+        <div class="drop" id="dropLogo">
+          <input type="file" id="logo" accept="image/jpeg,image/png,image/webp,image/svg+xml,.svg" class="sr">
+          <label for="logo" class="drop-zone"><span class="drop-t">Tu <em>logo</em></span><span class="drop-s">Una imagen · JPG, PNG, WebP o SVG</span><span class="drop-b">Elegir archivo</span></label>
+          <ul class="thumbs-up" id="logoList"></ul>
+        </div>
+        <div class="drop" id="dropFotos">
+          <input type="file" id="fotos" accept="image/jpeg,image/png,image/webp" multiple class="sr">
+          <label for="fotos" class="drop-zone"><span class="drop-t">Fotos del <em>negocio</em></span><span class="drop-s">Hasta 4 · JPG, PNG o WebP · del local, del producto, del trabajo</span><span class="drop-b">Elegir fotos</span></label>
+          <ul class="thumbs-up" id="fotoList"></ul>
+        </div>
+        <p class="err" id="err-archivos" role="alert"></p>
+        <p class="legal-note">Hasta __MAX_MB__ MB cada imagen. Solo las uso para tu boceto.</p>
+      </div>
+
+      <div class="step" data-step="6" hidden>
+        <span class="tag">Último paso</span>
+        <h2 class="q">¿A qué correo te <em>escribo</em>?</h2>
+        <p class="sum" id="recap"></p>
+        <label class="field"><span>Tu nombre</span><input id="cnombre" name="cnombre" type="text" maxlength="80" autocomplete="name" placeholder="Lola" required></label>
+        <p class="err" id="err-nombre"></p>
+        <label class="field"><span>Tu correo</span><input id="cemail" name="cemail" type="email" maxlength="120" autocomplete="email" inputmode="email" placeholder="tu@email.com" required></label>
+        <p class="err" id="err-email"></p>
+        <label class="field"><span>Teléfono · opcional</span><input id="ctel" name="ctel" type="tel" maxlength="30" autocomplete="tel" inputmode="tel" placeholder="Si prefieres WhatsApp"></label>
+        <p class="err" id="err-telefono"></p>
+        <div class="trap" aria-hidden="true"><label>Web <input name="web" tabindex="-1" autocomplete="off"></label></div>
+        <label class="check"><input type="checkbox" id="priv"><span class="box" aria-hidden="true"></span><span>He leído y acepto la <a href="__BASE__/privacidad" target="_blank">privacidad</a>.</span></label>
+        <p class="err" id="err-privacidad"></p>
+        <p class="legal-note">Responsable: Jaime Sánchez (Estudio Jota). Uso tus datos y tus imágenes solo para prepararte el boceto y contestarte. No se los paso a nadie y puedes pedirme que los borre cuando quieras.</p>
+        <p class="err" id="err-general" role="alert"></p>
+        <button class="btn-lime btn-big" type="submit" id="send"><span>Pedir mi boceto</span><span class="arr">→</span></button>
+      </div>
+    </form>
+
+    <div class="done" id="done" hidden>
+      <span class="tag">Recibido</span>
+      <h2 class="q">Te preparo tu boceto <em>a mano</em>.</h2>
+      <p class="sum">Me ha llegado todo. Lo diseño yo y te lo mando a <b id="doneEmail"></b> __PLAZO__.</p>
+      <p class="sub">Si se te ocurre algo más, escríbeme a <a class="u" href="mailto:__CONTACTO__">__CONTACTO__</a>.</p>
+      <div class="done-actions"><a class="btn-lime" href="__WEB__/trabajos">Mientras, mira mis trabajos <span class="arr">→</span></a><button class="btn-line" type="button" id="again">Pedir otro <span class="arr">↺</span></button></div>
+    </div>
+
+    <div class="panel-foot" id="nav-steps">
+      <button type="button" class="btn-lime" id="next"><span id="nextLabel">Siguiente</span><span class="arr">→</span></button>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-brand"><p class="footer-name">Jaime<sup>®</sup></p><p class="footer-tag">Jaime Sánchez · Estudio Jota · Diseño web para negocios locales · Málaga</p></div>
+  <div class="footer-col"><span class="footer-label">Menú</span><a href="__WEB__/trabajos">Trabajos</a><a href="__WEB__/#como-funciona">Cómo funciona</a><a href="__WEB__/diseno-web-malaga">Diseño web en Málaga</a><a href="__WEB__/blog">Blog</a></div>
+  <div class="footer-col"><span class="footer-label">Contacto</span><a href="mailto:__CONTACTO__">__CONTACTO__</a><a href="https://www.instagram.com/estudiojotaweb/" target="_blank" rel="noopener">Instagram ↗</a></div>
+  <div class="footer-col"><span class="footer-label">Legal</span><a href="__WEB__/aviso-legal">Aviso legal</a><a href="__BASE__/privacidad">Privacidad</a></div>
+  <p class="footer-year">© 2026 Estudio Jota</p>
+</footer>
+<script src="__BASE__/js/mockup.js"></script>
+<script src="__BASE__/js/opciones.js"></script>
+<script src="__BASE__/js/app.js"></script>
+</body>
+</html>

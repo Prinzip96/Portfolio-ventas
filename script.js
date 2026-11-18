@@ -61,6 +61,13 @@
     });
   }
 
+  /* ——— Botones de boceto → formulario de /boceto ——— */
+  Array.from(document.querySelectorAll("[data-boceto]")).forEach((btn) => {
+    btn.addEventListener("click", () => {
+      window.location.href = "/boceto?o=web";
+    });
+  });
+
   /* ——— Flujo de contacto (copiado del portfolio) ——— */
   const chat = document.getElementById("chat");
   if (chat) {

@@ -3,6 +3,8 @@ node_modules
 .DS_Store
 *.log
 tools
+api/_boceto/tests
+api/_boceto/scripts
 _debug*
 assets/j06-render-antiguo.png
 assets/j06-render-antiguo.webp

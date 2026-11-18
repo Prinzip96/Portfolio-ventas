@@ -178,28 +178,57 @@ sup {
 }
 
 .nav-links {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  gap: 4px;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  border: 1px solid rgba(244, 242, 238, 0.09);
+  border-radius: 999px;
+  background: rgba(18, 18, 18, 0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .nav-links a {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
   color: var(--muted);
-  transition: color 0.3s ease;
+  font-size: 13.5px;
+  transition: color 0.3s ease, background 0.3s ease;
   white-space: nowrap;
-}
-
-.nav-links a::after {
-  content: ",";
-  color: var(--muted);
-}
-
-.nav-links a:last-child::after {
-  content: "";
 }
 
 .nav-links a:hover {
   color: var(--fg);
+  background: rgba(244, 242, 238, 0.07);
+}
+
+.nav-links .nav-boceto {
+  color: var(--accent);
+}
+
+.nav-links .nav-boceto:hover {
+  color: var(--accent);
+  background: rgba(188, 255, 77, 0.1);
+}
+
+.nav-tag {
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: rgba(188, 255, 77, 0.14);
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
 }
 
 .nav-cta {
@@ -269,6 +298,91 @@ sup {
 }
 body.nav-open {
   overflow: hidden;
+}
+
+@media (max-width: 1180px) {
+  .nav {
+    gap: 14px;
+  }
+
+  .nav-logo {
+    order: 1;
+  }
+
+  .nav-cta {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+    order: 3;
+    margin-left: 0;
+  }
+
+  .nav.is-open {
+    background: #0a0a0a;
+    border-bottom: 1px solid rgba(244, 242, 238, 0.08);
+  }
+
+  .nav-links {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 55;
+    width: 100%;
+    height: 100dvh;
+    min-height: 100%;
+    transform: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+    padding: 88px var(--pad) 40px;
+    margin: 0;
+    box-sizing: border-box;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 0;
+    border-radius: 0;
+    background: #0a0a0a;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.35s ease, visibility 0.35s;
+  }
+
+  .nav.is-open .nav-links {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .nav-links a {
+    gap: 14px;
+    padding: 8px 0;
+    border-radius: 0;
+    font-family: var(--font-display);
+    font-size: clamp(28px, 8vw, 40px);
+    line-height: 1.2;
+    color: var(--fg);
+    white-space: normal;
+  }
+
+  .nav-links a:hover,
+  .nav-links .nav-boceto:hover {
+    background: none;
+  }
+
+  .nav-tag {
+    font-family: var(--font-ui);
+    font-size: 11px;
+  }
 }
 
 /* ——— Botones de contacto ——— */
@@ -3130,71 +3244,6 @@ body.chat-open {
   .acc-inner p,
   .tags {
     grid-column: 1;
-  }
-
-  .nav-logo {
-    order: 1;
-  }
-
-  .nav-cta {
-    order: 2;
-    margin-left: auto;
-  }
-
-  .nav-toggle {
-    display: inline-flex;
-    order: 3;
-    margin-left: 0;
-  }
-
-  .nav.is-open {
-    background: #0a0a0a;
-    border-bottom: 1px solid rgba(244, 242, 238, 0.08);
-  }
-
-  .nav-links {
-    display: flex;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 55;
-    width: 100%;
-    height: 100dvh;
-    min-height: 100%;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 4px;
-    padding: 88px var(--pad) 40px;
-    margin: 0;
-    box-sizing: border-box;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    background: #0a0a0a;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.35s ease, visibility 0.35s;
-  }
-
-  .nav.is-open .nav-links {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  }
-
-  .nav-links a {
-    font-family: var(--font-display);
-    font-size: clamp(28px, 8vw, 40px);
-    line-height: 1.2;
-    color: var(--fg);
-    white-space: normal;
-    padding: 8px 0;
-  }
-
-  .nav-links a::after {
-    content: none;
   }
 
   .hero {

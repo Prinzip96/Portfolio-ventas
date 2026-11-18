@@ -9,6 +9,7 @@
   const BASE = document.documentElement.dataset.base || '';
   const MAX_MB = Number(document.documentElement.dataset.maxmb || 8);
   const BLOB = document.documentElement.dataset.subida === 'blob';
+  const VERSION = document.currentScript ? new URL(document.currentScript.src).search : '';
   const pad = n => String(n).padStart(2, '0');
   const esc = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   // Origen de la visita (?o=bio, ?o=reel, ?o=dm…). Se guarda en la sesión y viaja con el brief.
@@ -262,7 +263,7 @@
   function cargarSubida() {
     return subidaLista || (subidaLista = new Promise((ok, mal) => {
       const s = document.createElement('script');
-      s.src = BASE + '/js/subida.js';
+      s.src = BASE + '/js/subida.js' + VERSION;
       s.onload = () => window.subidaBlob ? ok(window.subidaBlob) : mal(new Error('subida'));
       s.onerror = () => { subidaLista = null; mal(new Error('subida')); };
       document.head.appendChild(s);

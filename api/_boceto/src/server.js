@@ -31,9 +31,12 @@ app.use((req, res, next) => {
 const r = express.Router();
 const B = C.BASE_PATH;
 
+// Los estáticos se cachean un día: la versión en la URL obliga a pedirlos de nuevo en cada despliegue
+const VERSION = (process.env.VERCEL_GIT_COMMIT_SHA || String(Date.now())).slice(0, 8);
+
 // Página del formulario: el HTML lleva la ruta base, el email de contacto, el plazo y los límites
 const indexHtml = () => fs.readFileSync(path.join(PUBLIC, 'index.html'), 'utf8')
-  .replace(/__BASE__/g, B).replace(/__CONTACTO__/g, C.CONTACTO_EMAIL).replace(/__WEB__/g, C.ESTUDIO_WEB)
+  .replace(/__BASE__/g, B).replace(/__V__/g, VERSION).replace(/__CONTACTO__/g, C.CONTACTO_EMAIL).replace(/__WEB__/g, C.ESTUDIO_WEB)
   .replace(/__PLAZO__/g, C.PLAZO).replace(/__MAX_MB__/g, String(C.MAX_MB)).replace(/__SUBIDA__/g, C.BLOB ? 'blob' : 'form');
 let cachedIndex = null;
 r.get('/', (req, res) => {

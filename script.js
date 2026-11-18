@@ -197,7 +197,7 @@
       setStatus("Enviando…", null);
 
       try {
-        const res = await fetch(`https://formsubmit.co/ajax/${MAIL}`, {
+        const res = await fetch("/api/contact", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -206,34 +206,37 @@
           body: JSON.stringify({
             name,
             email,
-            message,
-            _subject: `Estudio Jota — ${name}: ${answers[1]}`,
-            _template: "table",
-            _captcha: "false",
-            _honey: honey?.value || "",
-            Necesito: answers[1],
-            Uso: answers[2],
-            Plazos: answers[3],
+            message: extra,
+            necesito: answers[1],
+            uso: answers[2],
+            plazos: answers[3],
+            _gotcha: honey?.value || "",
           }),
         });
         const data = await res.json().catch(() => ({}));
-        if (!res.ok) throw new Error(data.message || "No se pudo enviar");
+        if (!res.ok || !data.ok) {
+          throw new Error(data.error || "No se pudo enviar");
+        }
 
         if (sendLabel) sendLabel.textContent = "Enviado";
         sendBtn.classList.add("is-ok");
-        setStatus(
-          "Listo. Te escribo yo a tu correo. (Si es la primera vez, confirma el aviso que te llega a Gmail.)",
-          "ok"
-        );
+        setStatus("Listo. Te escribo yo a tu correo.", "ok");
         form.reset();
         rollCaptcha();
       } catch (err) {
         if (sendLabel) sendLabel.textContent = "Enviar";
         sendBtn.disabled = false;
-        setStatus("No salió por la red. Ábrelo en tu correo y mándalo desde ahí.", "err");
-        window.location.href = `mailto:${MAIL}?subject=${encodeURIComponent(
-          `Boceto — ${name}`
-        )}&body=${encodeURIComponent(message)}`;
+        setStatus(
+          err?.message && !/fetch|network|Failed/i.test(err.message)
+            ? err.message
+            : "No salió por la red. Ábrelo en tu correo y mándalo desde ahí.",
+          "err"
+        );
+        if (!err?.message || /fetch|network|Failed/i.test(String(err.message))) {
+          window.location.href = `mailto:${MAIL}?subject=${encodeURIComponent(
+            `Boceto — ${name}`
+          )}&body=${encodeURIComponent(message)}`;
+        }
       } finally {
         sending = false;
         if (!sendBtn.classList.contains("is-ok")) {

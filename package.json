@@ -12,6 +12,7 @@
     "serve": "npx --yes serve -l 8080 ."
   },
   "dependencies": {
+    "resend": "^6.39.0",
     "serve": "^14.2.5",
     "three": "^0.186.0"
   },

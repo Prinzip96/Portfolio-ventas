@@ -258,10 +258,20 @@
   // Si el envío falla por un dato mal puesto, las imágenes ya subidas se reutilizan.
   const subidas = new Map();
   const EXT = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp', 'image/svg+xml': 'svg' };
+  let subidaLista = null;
+  function cargarSubida() {
+    return subidaLista || (subidaLista = new Promise((ok, mal) => {
+      const s = document.createElement('script');
+      s.src = BASE + '/js/subida.js';
+      s.onload = () => window.subidaBlob ? ok(window.subidaBlob) : mal(new Error('subida'));
+      s.onerror = () => { subidaLista = null; mal(new Error('subida')); };
+      document.head.appendChild(s);
+    }));
+  }
   async function subirImagenes(onProgress) {
     const lista = [...(files.logo ? [['logo', files.logo]] : []), ...files.fotos.map(f => ['fotos', f])];
     if (!lista.length) return [];
-    const { upload } = await import(BASE + '/js/subida.js');
+    const { upload } = await cargarSubida();
     const total = lista.reduce((n, [, f]) => n + f.size, 0) || 1;
     const carpeta = Array.from(crypto.getRandomValues(new Uint8Array(16)), b => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_'[b & 63]).join('').slice(0, 16);
     let hecho = 0;

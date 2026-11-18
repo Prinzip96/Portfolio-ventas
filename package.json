@@ -6,7 +6,7 @@
   "scripts": {
     "footer": "node tools/inject-footer.js",
     "build": "esbuild src/app.js --bundle --minify --format=esm --target=es2020 --outdir=js --entry-names=app --splitting --chunk-names=chunk-[hash] && npm run build:boceto",
-    "build:boceto": "esbuild api/_boceto/src/subida-navegador.js --bundle --minify --format=esm --platform=browser --target=es2020 --outfile=api/_boceto/public/js/subida.js",
+    "build:boceto": "esbuild api/_boceto/src/subida-navegador.js --bundle --minify --format=iife --global-name=subidaBlob --platform=browser --target=es2020 --outfile=api/_boceto/public/js/subida.js",
     "boceto": "node api/_boceto/src/server.js",
     "images": "node tools/webp.js",
     "prestart": "npm run build",

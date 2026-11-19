@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /boceto/admin
+
+# /boceto/b/* NO se bloquea a propósito: lleva X-Robots-Tag noindex y Google tiene que poder leerlo.
 
 Sitemap: https://www.estudiojota.es/sitemap.xml

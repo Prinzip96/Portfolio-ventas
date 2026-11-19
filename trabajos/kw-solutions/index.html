@@ -26,6 +26,28 @@
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "Person",
+        "@id": "https://www.estudiojota.es/#jaime",
+        "name": "Jaime Sánchez",
+        "url": "https://www.estudiojota.es/",
+        "sameAs": ["https://www.linkedin.com/in/jaime-sanchez-2835342b7/", "https://www.instagram.com/estudiojotaweb/"]
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://www.estudiojota.es/#negocio",
+        "name": "Estudio Jota",
+        "url": "https://www.estudiojota.es/",
+        "logo": "https://www.estudiojota.es/apple-touch-icon.png",
+        "email": "hola@estudiojota.es",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Málaga",
+          "addressRegion": "Andalucía",
+          "addressCountry": "ES"
+        },
+        "areaServed": { "@type": "Country", "name": "España" }
+      },
+      {
         "@type": "CreativeWork",
         "name": "KW Solutions",
         "url": "https://www.estudiojota.es/trabajos/kw-solutions",
@@ -35,8 +57,11 @@
         "dateCreated": "2026",
         "inLanguage": "es-ES",
         "genre": "Diseño web · WordPress editable",
-        "about": "Eficiencia energética",
-        "sameAs": "https://kwsolutions.es",
+        "about": {
+          "@type": "Organization",
+          "name": "KW Solutions",
+          "url": "https://kwsolutions.es"
+        },
         "image": "https://www.estudiojota.es/assets/shots/kw.webp"
       },
       {

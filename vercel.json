@@ -14,7 +14,7 @@
   "rewrites": [
     { "source": "/boceto", "destination": "/api/boceto" },
     { "source": "/boceto/:path*", "destination": "/api/boceto" },
-    { "source": "/:path((?!api/|boceto|assets/|js/|css/|_vercel/).*)", "destination": "/api/notfound" }
+    { "source": "/:path((?!api/|boceto|_vercel/).*)", "destination": "/api/notfound" }
   ],
   "redirects": [
     {

@@ -36,12 +36,29 @@ if (light) {
   flattenStage();
   bootRest();
 } else {
+  let loaded = false;
   const run = () => {
+    if (loaded) return;
+    loaded = true;
     load3D().catch(flattenStage).finally(bootRest);
   };
+  
+  // Esperar a la primera interacción significativa (scroll, click, touch) o timeout largo
+  const onInteract = () => {
+    removeEventListener("scroll", onInteract, { passive: true });
+    removeEventListener("click", onInteract);
+    removeEventListener("touchstart", onInteract, { passive: true });
+    run();
+  };
+  
+  addEventListener("scroll", onInteract, { passive: true });
+  addEventListener("click", onInteract);
+  addEventListener("touchstart", onInteract, { passive: true });
+  
+  // Fallback: cargar después de 3s si no hay interacción
   if ("requestIdleCallback" in window) {
-    requestIdleCallback(run, { timeout: 1600 });
+    requestIdleCallback(run, { timeout: 3000 });
   } else {
-    setTimeout(run, 350);
+    setTimeout(run, 3000);
   }
 }

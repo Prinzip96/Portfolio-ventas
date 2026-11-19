@@ -99,42 +99,22 @@ function openFullscreen(){
   clone.removeAttribute('id');
   fsContent.innerHTML='';
   fsContent.appendChild(clone);
+  fsOverlay.removeAttribute('hidden');
+  document.body.style.overflow='hidden';
   const reqFs=fsOverlay.requestFullscreen||fsOverlay.webkitRequestFullscreen||fsOverlay.webkitRequestFullScreen;
   if(reqFs){
-    let fallbackCalled=false;
-    const fallbackTimeout=setTimeout(()=>{
-      if(!fallbackCalled&&!usingNativeFs){
-        fallbackCalled=true;
-        fallbackFullscreen();
-      }
-    },300);
     try{
       reqFs.call(fsOverlay).then(()=>{
-        clearTimeout(fallbackTimeout);
         usingNativeFs=true;
       }).catch(()=>{
-        clearTimeout(fallbackTimeout);
-        if(!fallbackCalled){
-          fallbackCalled=true;
-          fallbackFullscreen();
-        }
+        usingNativeFs=false;
       });
     }catch(e){
-      clearTimeout(fallbackTimeout);
-      if(!fallbackCalled){
-        fallbackCalled=true;
-        fallbackFullscreen();
-      }
+      usingNativeFs=false;
     }
   }else{
-    fallbackFullscreen();
+    usingNativeFs=false;
   }
-}
-function fallbackFullscreen(){
-  usingNativeFs=false;
-  fsOverlay.removeAttribute('hidden');
-  fsOverlay.style.display='flex';
-  document.body.style.overflow='hidden';
 }
 function closeFullscreen(){
   if(usingNativeFs){
@@ -150,7 +130,7 @@ function closeFullscreen(){
 }
 function cleanup(){
   usingNativeFs=false;
-  fsOverlay.hidden=true;
+  fsOverlay.setAttribute('hidden','');
   document.body.style.overflow='';
   fsContent.innerHTML='';
 }

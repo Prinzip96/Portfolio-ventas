@@ -47,7 +47,10 @@ async function startServer() {
 
 async function runTests() {
   let server;
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({ 
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+  });
   
   try {
     console.log('\n=== Iniciando servidor de prueba ===\n');
@@ -83,52 +86,20 @@ async function runTests() {
     });
     const page2 = await context2.newPage();
     
-    // Capturar logs de JavaScript
-    page2.on('console', msg => {
-      const text = msg.text();
-      if (text.startsWith('[FS]') || msg.type() === 'error') {
-        console.log(`[Browser ${msg.type()}]`, text);
-      }
-    });
     page2.on('pageerror', err => {
       console.log('[Page Error]', err.message);
     });
     
     await page2.goto(BOCETO_URL, { waitUntil: 'networkidle' });
     
-    // Verificar que el botón existe
-    const btnExists = await page2.locator('#fullscreenBtn').count();
-    console.log(`Botón "Ver en grande" encontrado: ${btnExists} vez(ces)`);
-    
-    // Verificar que el onclick está registrado
-    const hasOnClick = await page2.evaluate(() => {
-      const btn = document.getElementById('fullscreenBtn');
-      return btn && typeof btn.onclick === 'function';
-    });
-    console.log(`onclick registrado: ${hasOnClick}`);
-    
     // Pulsar "Ver en grande"
-    console.log('Haciendo clic en "Ver en grande"...');
     await page2.locator('#fullscreenBtn').click();
-    
-    // Esperar más tiempo para que el fallback se active (300ms timeout + margen)
-    await page2.waitForTimeout(1500);
-    
-    // Depurar el estado del overlay
-    const overlayHiddenAttr = await page2.locator('#fullscreenOverlay').getAttribute('hidden');
-    const overlayDisplay = await page2.locator('#fullscreenOverlay').evaluate(el => {
-      const computed = window.getComputedStyle(el).display;
-      const inline = el.style.display;
-      return { computed, inline };
-    });
-    console.log(`Overlay hidden attr: ${overlayHiddenAttr}, computed display: ${overlayDisplay.computed}, inline display: ${overlayDisplay.inline}`);
+    await page2.waitForTimeout(500);
     
     // Verificar que el overlay está visible
     const overlayVisible = await page2.locator('#fullscreenOverlay').isVisible();
     if (!overlayVisible) {
       console.error('❌ FAIL: El overlay de pantalla completa NO está visible');
-      // Intentar verificar el fallback
-      console.log('Verificando si el fallback se activó...');
     } else {
       console.log('✅ El overlay está visible');
     }
@@ -254,6 +225,29 @@ async function runTests() {
       } else {
         console.error('❌ FAIL: El iframe NO ocupa 100vw x 100vh en móvil');
       }
+    }
+    
+    // Test 8: Clics después de cerrar
+    console.log('\n=== Test 8: Clics en iframe después de cerrar fullscreen ===\n');
+    await page4.locator('#fullscreenClose').click();
+    await page4.waitForTimeout(300);
+    
+    // Verificar que elementsFromPoint devuelve el iframe original
+    const elementsAtIframe = await page4.evaluate(() => {
+      const iframe = document.querySelector('.view-frame');
+      const rect = iframe.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const elements = document.elementsFromPoint(centerX, centerY);
+      return elements.map(el => el.tagName);
+    });
+    
+    console.log('Elementos en el centro del iframe:', elementsAtIframe);
+    
+    if (elementsAtIframe.includes('IFRAME')) {
+      console.log('✅ PASS: El iframe es clickeable después de cerrar');
+    } else {
+      console.error('❌ FAIL: El iframe NO es clickeable (elementos:', elementsAtIframe.join(', ') + ')');
     }
     
     await context4.close();

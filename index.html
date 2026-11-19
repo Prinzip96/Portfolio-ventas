@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#0a0a0a" />
   <meta name="robots" content="index, follow" />
-  <title>Diseñador web freelance en Málaga · Jaime Sánchez | Estudio Jota</title>
-  <meta name="description" content="Soy Jaime Sánchez, diseñador web freelance en Málaga. Webs a medida para negocios de toda España: primero ves tu boceto gratis y luego decides." />
+  <title>Diseñador web en Málaga · Webs para negocios | Estudio Jota</title>
+  <meta name="description" content="Diseñador web freelance en Málaga: páginas web para negocios de toda España. Primero ves tu boceto gratis y luego decides. Precio cerrado desde 250 € + IVA." />
   <meta name="author" content="Jaime Sánchez · Estudio Jota" />
   <link rel="canonical" href="https://www.estudiojota.es/" />
   <meta property="og:url" content="https://www.estudiojota.es/" />
@@ -34,14 +34,16 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "ProfessionalService",
+        "@type": ["ProfessionalService", "LocalBusiness"],
         "@id": "https://www.estudiojota.es/#negocio",
-        "name": "Jaime Sánchez · Estudio Jota",
-        "alternateName": ["Estudio Jota Málaga", "Jaime"],
+        "name": "Estudio Jota",
+        "alternateName": ["Jaime Sánchez · Estudio Jota", "Estudio Jota Málaga"],
         "url": "https://www.estudiojota.es/",
+        "logo": "https://www.estudiojota.es/apple-touch-icon.png",
         "image": "https://www.estudiojota.es/assets/og.jpg",
         "email": "hola@estudiojota.es",
-        "description": "Diseñador web freelance en Málaga. Webs a medida para negocios de toda España.",
+        "description": "Diseñador web freelance en Málaga. Páginas web a medida para negocios locales de toda España, con boceto gratis antes de decidir.",
+        "priceRange": "desde 250 € + IVA",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Málaga",
@@ -50,10 +52,18 @@
         },
         "areaServed": [
           { "@type": "City", "name": "Málaga" },
+          { "@type": "AdministrativeArea", "name": "Provincia de Málaga" },
           { "@type": "Country", "name": "España" }
         ],
-        "knowsAbout": ["Diseño web", "SEO local", "Contenido con IA"],
+        "knowsAbout": ["Diseño web", "Diseño web en Málaga", "WordPress", "SEO local", "Reservas online", "Tiendas online", "Contenido con IA"],
         "founder": { "@id": "https://www.estudiojota.es/#jaime" },
+        "makesOffer": [
+          { "@type": "Offer", "name": "Boceto web gratis", "price": "0", "priceCurrency": "EUR", "url": "https://www.estudiojota.es/boceto" },
+          { "@type": "Offer", "name": "Pack Escaparate", "url": "https://www.estudiojota.es/diseno-web-malaga#packs", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 250, "priceCurrency": "EUR", "valueAddedTaxIncluded": false } },
+          { "@type": "Offer", "name": "Pack Web de negocio", "url": "https://www.estudiojota.es/diseno-web-malaga#packs", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 450, "priceCurrency": "EUR", "valueAddedTaxIncluded": false } },
+          { "@type": "Offer", "name": "Pack Reservas", "url": "https://www.estudiojota.es/diseno-web-malaga#packs", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 650, "priceCurrency": "EUR", "valueAddedTaxIncluded": false } },
+          { "@type": "Offer", "name": "Pack Tienda", "url": "https://www.estudiojota.es/diseno-web-malaga#packs", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 900, "priceCurrency": "EUR", "valueAddedTaxIncluded": false } }
+        ],
         "sameAs": [
           "https://www.instagram.com/estudiojotaweb/",
           "https://www.linkedin.com/in/jaime-sanchez-2835342b7/",
@@ -64,22 +74,35 @@
         "@type": "Person",
         "@id": "https://www.estudiojota.es/#jaime",
         "name": "Jaime Sánchez",
+        "url": "https://www.estudiojota.es/",
         "jobTitle": "Diseñador web freelance",
         "worksFor": { "@id": "https://www.estudiojota.es/#negocio" },
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Málaga",
-          "addressCountry": "ES"
-        },
-        "sameAs": ["https://www.instagram.com/estudiojotaweb/"]
+        "homeLocation": { "@type": "City", "name": "Málaga" },
+        "knowsLanguage": ["es", "en"],
+        "knowsAbout": ["Diseño web", "WordPress", "GA4", "Google Tag Manager", "Kit Digital"],
+        "sameAs": [
+          "https://www.instagram.com/estudiojotaweb/",
+          "https://www.linkedin.com/in/jaime-sanchez-2835342b7/",
+          "https://github.com/Prinzip96"
+        ]
       },
       {
         "@type": "WebSite",
         "@id": "https://www.estudiojota.es/#web",
         "url": "https://www.estudiojota.es/",
         "name": "Estudio Jota",
+        "alternateName": "Jaime Sánchez · Estudio Jota",
         "inLanguage": "es-ES",
         "publisher": { "@id": "https://www.estudiojota.es/#negocio" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.estudiojota.es/#pagina",
+        "url": "https://www.estudiojota.es/",
+        "name": "Diseñador web en Málaga · Webs para negocios",
+        "isPartOf": { "@id": "https://www.estudiojota.es/#web" },
+        "about": { "@id": "https://www.estudiojota.es/#negocio" },
+        "inLanguage": "es-ES"
       },
       {
         "@type": "FAQPage",
@@ -179,6 +202,7 @@
 
         <section class="hero" id="top">
           <h1 class="hero-title">
+            <span class="sr-only">Diseñador web en Málaga · </span>
             <span class="line"><span>Primero ves tu <em>boceto</em>.</span></span>
             <span class="line"><span>Luego decides.</span></span>
           </h1>
@@ -225,7 +249,22 @@
           <p class="orbit-cta">¿Quieres ver cómo quedaría la tuya?
             <button type="button" data-boceto class="link-like">Pídeme tu boceto gratis <span class="arr">→</span></button></p>
         </div>
-        <noscript><p class="orbit-noscript">monarealestate.es · kwsolutions.es · desbloque.com · prinzip96.github.io/PHOBIA · prinzip96.github.io/Distrito-4</p></noscript>
+        <noscript>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; max-width: 1200px; margin: 2rem auto;">
+            <div><a href="/trabajos/mona-real-estate"><img src="/assets/shots/mona.webp" alt="Web de Mona Real Estate, inmobiliaria en Málaga" width="1024" height="700" loading="lazy" style="width: 100%; height: auto;"></a></div>
+            <div><a href="/trabajos/kw-solutions"><img src="/assets/shots/kw.webp" alt="Web de KW Solutions, consultoría tecnológica" width="1024" height="700" loading="lazy" style="width: 100%; height: auto;"></a></div>
+            <div><img src="/assets/shots/desbloque.webp" alt="Web de Desbloque, app de gestión de incidencias" width="1024" height="700" loading="lazy" style="width: 100%; height: auto;"></div>
+            <div><img src="/assets/shots/phobia.webp" alt="Web de PHOBIA, videojuego de terror" width="1024" height="700" loading="lazy" style="width: 100%; height: auto;"></div>
+            <div><img src="/assets/shots/distrito4.webp" alt="Web de Distrito 4, proyecto inmobiliario" width="1024" height="700" loading="lazy" style="width: 100%; height: auto;"></div>
+          </div>
+        </noscript>
+        <div style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;" aria-hidden="true">
+          <a href="/trabajos/mona-real-estate"><img src="/assets/shots/mona.webp" alt="Web de Mona Real Estate, inmobiliaria en Málaga" width="1024" height="700" loading="lazy"></a>
+          <a href="/trabajos/kw-solutions"><img src="/assets/shots/kw.webp" alt="Web de KW Solutions, consultoría tecnológica" width="1024" height="700" loading="lazy"></a>
+          <img src="/assets/shots/desbloque.webp" alt="Web de Desbloque, app de gestión de incidencias" width="1024" height="700" loading="lazy">
+          <img src="/assets/shots/phobia.webp" alt="Web de PHOBIA, videojuego de terror" width="1024" height="700" loading="lazy">
+          <img src="/assets/shots/distrito4.webp" alt="Web de Distrito 4, proyecto inmobiliario" width="1024" height="700" loading="lazy">
+        </div>
       </div>
     </div>
 
@@ -266,7 +305,7 @@
     <!-- 4 · Packs -->
     <section class="packs" id="packs">
       <div class="vhead">
-        <h2 class="section-title">Packs</h2>
+        <h2 class="section-title">Packs de página web para negocios</h2>
         <p class="vsub">Tres puntos de partida. Si lo tuyo no encaja en ninguno, lo vemos y te doy precio igual.</p>
       </div>
       <div class="pack-grid">
@@ -451,6 +490,16 @@
           <p class="final-mail">o directamente a <a href="mailto:hola@estudiojota.es">hola@estudiojota.es</a></p>
         </div>
       </div>
+    </section>
+
+    <!-- Del blog -->
+    <section class="blog-links" style="padding: 4rem 1.5rem; max-width: 64rem; margin: 0 auto;">
+      <h2 class="section-title">Del blog</h2>
+      <ul style="list-style: none; padding: 0; margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+        <li><a href="./blog/necesito-web-si-tengo-instagram" style="display: block; padding: 1rem; border: 1px solid #e5e5e5; border-radius: 8px; text-decoration: none; color: inherit;">¿Necesito una web si ya tengo Instagram?</a></li>
+        <li><a href="./blog/web-para-restaurante" style="display: block; padding: 1rem; border: 1px solid #e5e5e5; border-radius: 8px; text-decoration: none; color: inherit;">Qué debe tener la web de un restaurante</a></li>
+        <li><a href="./blog/linktree-o-web-propia" style="display: block; padding: 1rem; border: 1px solid #e5e5e5; border-radius: 8px; text-decoration: none; color: inherit;">Linktree o web propia: qué es mejor para tu negocio</a></li>
+      </ul>
     </section>
     </div>
   </main>

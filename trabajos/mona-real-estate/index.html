@@ -26,6 +26,28 @@
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "Person",
+        "@id": "https://www.estudiojota.es/#jaime",
+        "name": "Jaime Sánchez",
+        "url": "https://www.estudiojota.es/",
+        "sameAs": ["https://www.linkedin.com/in/jaime-sanchez-2835342b7/", "https://www.instagram.com/estudiojotaweb/"]
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://www.estudiojota.es/#negocio",
+        "name": "Estudio Jota",
+        "url": "https://www.estudiojota.es/",
+        "logo": "https://www.estudiojota.es/apple-touch-icon.png",
+        "email": "hola@estudiojota.es",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Málaga",
+          "addressRegion": "Andalucía",
+          "addressCountry": "ES"
+        },
+        "areaServed": { "@type": "Country", "name": "España" }
+      },
+      {
         "@type": "CreativeWork",
         "name": "Mona Real Estate",
         "url": "https://www.estudiojota.es/trabajos/mona-real-estate",
@@ -35,8 +57,11 @@
         "dateCreated": "2026",
         "inLanguage": "es-ES",
         "genre": "Diseño web · WordPress · Plugin a medida",
-        "about": "Inmobiliaria",
-        "sameAs": "https://monarealestate.es",
+        "about": {
+          "@type": "Organization",
+          "name": "Mona Real Estate",
+          "url": "https://monarealestate.es"
+        },
         "image": "https://www.estudiojota.es/assets/shots/mona.webp"
       },
       {

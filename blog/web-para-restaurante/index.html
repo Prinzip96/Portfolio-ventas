@@ -27,17 +27,49 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Article",
+        "@type": "Person",
+        "@id": "https://www.estudiojota.es/#jaime",
+        "name": "Jaime Sánchez",
+        "url": "https://www.estudiojota.es/",
+        "sameAs": ["https://www.linkedin.com/in/jaime-sanchez-2835342b7/", "https://www.instagram.com/estudiojotaweb/"]
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://www.estudiojota.es/#negocio",
+        "name": "Estudio Jota",
+        "url": "https://www.estudiojota.es/",
+        "logo": "https://www.estudiojota.es/apple-touch-icon.png",
+        "email": "hola@estudiojota.es",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Málaga",
+          "addressRegion": "Andalucía",
+          "addressCountry": "ES"
+        },
+        "areaServed": { "@type": "Country", "name": "España" }
+      },
+      {
+        "@type": "BlogPosting",
+        "@id": "https://www.estudiojota.es/blog/web-para-restaurante#post",
         "headline": "Qué debe tener la web de un restaurante",
         "description": "Carta legible en el móvil, horario, cómo llegar y un botón para reservar. Lo que sí y lo que sobra.",
         "image": "https://www.estudiojota.es/assets/og.jpg",
-        "author": { "@id": "https://www.estudiojota.es/#jaime" },
+        "author": {
+          "@type": "Person",
+          "@id": "https://www.estudiojota.es/#jaime",
+          "name": "Jaime Sánchez",
+          "url": "https://www.estudiojota.es/"
+        },
         "publisher": { "@id": "https://www.estudiojota.es/#negocio" },
         "datePublished": "2026-11-03",
-        "dateModified": "2026-11-03",
+        "dateModified": "2026-11-19",
         "inLanguage": "es-ES",
-        "mainEntityOfPage": "https://www.estudiojota.es/blog/web-para-restaurante",
-        "isPartOf": { "@id": "https://www.estudiojota.es/blog#blog" }
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://www.estudiojota.es/blog/web-para-restaurante"
+        },
+        "isPartOf": { "@id": "https://www.estudiojota.es/blog#blog" },
+        "about": ["Diseño web para restaurantes", "Página web para negocios"]
       },
       {
         "@type": "BreadcrumbList",
@@ -65,10 +97,10 @@
     <nav class="sv-links" id="navLinks" aria-label="Navegación principal">
       <a href="/trabajos">Trabajos</a>
       <a href="/#como-funciona">Cómo funciona</a>
-      <a href="/diseno-web-malaga/">Servicios</a>
+      <a href="/diseno-web-malaga">Servicios</a>
       <a href="/#packs">Packs</a>
       <a href="/#preguntas">Preguntas</a>
-      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="/blog" aria-current="page">Blog</a>
       <a class="nav-boceto" href="/boceto?o=web">Boceto <span class="nav-tag">gratis</span></a>
     </nav>
     <button class="sv-nav-toggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menú">
@@ -81,7 +113,7 @@
     <article>
       <header class="ar-head">
         <div class="ar-head-in">
-          <a class="ar-back" href="/blog/">← Blog</a>
+          <a class="ar-back" href="/blog">← Blog</a>
           <p class="sv-eyebrow">Restaurantes</p>
           <h1>Qué debe tener la web de un <em>restaurante</em></h1>
           <p class="ar-meta"><span>Jaime Sánchez</span><span><time datetime="2026-11-03">3 de noviembre de 2026</time></span><span>5 min de lectura</span></p>
@@ -134,8 +166,8 @@
 
     <nav class="ar-more" aria-label="Más artículos">
       <h2>Sigue leyendo</h2>
-      <a href="/blog/necesito-web-si-tengo-instagram/">¿Necesito web si ya tengo Instagram?</a>
-      <a href="/blog/linktree-o-web-propia/">Linktree o web propia: qué le conviene a tu negocio</a>
+      <a href="/blog/necesito-web-si-tengo-instagram">¿Necesito web si ya tengo Instagram?</a>
+      <a href="/blog/linktree-o-web-propia">Linktree o web propia: qué le conviene a tu negocio</a>
     </nav>
   </main>
 

@@ -63,14 +63,54 @@ function boceto(b) {
   <div class="view-actions">
     <a class="btn-lime" href="mailto:${esc(C.CONTACTO_EMAIL)}?subject=${encodeURIComponent('Mi boceto: ' + b.negocio.nombre)}">Contestarte <span class="arr">→</span></a>
     <a class="btn-line" href="${esc(W)}/trabajos">Ver otros trabajos <span class="arr">→</span></a>
+    <button class="btn-line" type="button" id="fullscreenBtn">Ver en grande <span class="arr">↗</span></button>
   </div>
 </div>
-<div class="view-stage">
+<div class="view-stage" id="viewStage">
   <figure class="frame-d" id="vd"><div class="chrome"><span></span><span></span><span></span><b>boceto · ${esc(b.negocio.nombre)}</b></div>${d}</figure>
   ${m ? `<figure class="frame-m" id="vm" hidden><div class="notch"></div>${m}</figure>` : ''}
 </div>
 </main>
-${m ? `<script>document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.seg button').forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-selected',x===b)});vd.hidden=b.dataset.v!=='d';vm.hidden=b.dataset.v!=='m'})</script>` : ''}` });
+<div class="fullscreen-overlay" id="fullscreenOverlay" hidden>
+  <button class="fullscreen-close" type="button" id="fullscreenClose" aria-label="Cerrar vista en grande">✕ Cerrar</button>
+  <div class="fullscreen-content" id="fullscreenContent"></div>
+</div>
+<script>
+(function(){
+const fsBtn=document.getElementById('fullscreenBtn');
+const fsOverlay=document.getElementById('fullscreenOverlay');
+const fsClose=document.getElementById('fullscreenClose');
+const fsContent=document.getElementById('fullscreenContent');
+const vd=document.getElementById('vd');
+const vm=document.getElementById('vm');
+const viewStage=document.getElementById('viewStage');
+${m ? `const segBtns=document.querySelectorAll('.seg button');
+segBtns.forEach(b=>b.onclick=()=>{
+  segBtns.forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-selected',x===b)});
+  vd.hidden=b.dataset.v!=='d';
+  vm.hidden=b.dataset.v!=='m';
+});` : ''}
+function openFullscreen(){
+  const activeFrame=vm&&!vm.hidden?vm:vd;
+  const clone=activeFrame.cloneNode(true);
+  clone.removeAttribute('hidden');
+  clone.removeAttribute('id');
+  fsContent.innerHTML='';
+  fsContent.appendChild(clone);
+  fsOverlay.hidden=false;
+  document.body.style.overflow='hidden';
+}
+function closeFullscreen(){
+  fsOverlay.hidden=true;
+  document.body.style.overflow='';
+  fsContent.innerHTML='';
+}
+fsBtn.onclick=openFullscreen;
+fsClose.onclick=closeFullscreen;
+fsOverlay.onclick=e=>{if(e.target===fsOverlay)closeFullscreen()};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!fsOverlay.hidden)closeFullscreen()});
+})();
+</script>` });
 }
 
 function privacidad() {

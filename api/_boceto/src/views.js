@@ -94,25 +94,31 @@ segBtns.forEach(b=>b.onclick=()=>{
 function openFullscreen(){
   const activeFrame=vm&&!vm.hidden?vm:vd;
   const iframe=activeFrame.querySelector('.view-frame');
-  if(!iframe)return;
+  if(!iframe){console.log('[FS] No iframe found');return;}
   const clone=iframe.cloneNode(true);
   clone.removeAttribute('id');
   fsContent.innerHTML='';
   fsContent.appendChild(clone);
+  console.log('[FS] Iframe cloned');
   const reqFs=fsOverlay.requestFullscreen||fsOverlay.webkitRequestFullscreen||fsOverlay.webkitRequestFullScreen;
+  console.log('[FS] reqFs available:', !!reqFs);
   if(reqFs){
     let fallbackCalled=false;
     const fallbackTimeout=setTimeout(()=>{
+      console.log('[FS] Timeout reached, calling fallback');
       if(!fallbackCalled&&!usingNativeFs){
         fallbackCalled=true;
         fallbackFullscreen();
       }
     },300);
     try{
+      console.log('[FS] Calling requestFullscreen');
       reqFs.call(fsOverlay).then(()=>{
+        console.log('[FS] Fullscreen activated');
         clearTimeout(fallbackTimeout);
         usingNativeFs=true;
-      }).catch(()=>{
+      }).catch((err)=>{
+        console.log('[FS] Fullscreen rejected:', err);
         clearTimeout(fallbackTimeout);
         if(!fallbackCalled){
           fallbackCalled=true;
@@ -120,6 +126,7 @@ function openFullscreen(){
         }
       });
     }catch(e){
+      console.log('[FS] Exception:', e);
       clearTimeout(fallbackTimeout);
       if(!fallbackCalled){
         fallbackCalled=true;
@@ -127,14 +134,17 @@ function openFullscreen(){
       }
     }
   }else{
+    console.log('[FS] No requestFullscreen, using fallback');
     fallbackFullscreen();
   }
 }
 function fallbackFullscreen(){
+  console.log('[FS] fallbackFullscreen called');
   usingNativeFs=false;
   fsOverlay.removeAttribute('hidden');
   fsOverlay.style.display='flex';
   document.body.style.overflow='hidden';
+  console.log('[FS] Overlay display set to flex, hidden attr removed');
 }
 function closeFullscreen(){
   if(usingNativeFs){

@@ -11,9 +11,18 @@ const fecha = (iso, opts) => new Date(iso).toLocaleString('es-ES', { timeZone: '
 function nav() {
   return `<header class="nav" id="nav">
   <a class="nav-logo" href="${esc(W)}/">Jaime<sup>®</sup></a>
-  <nav class="nav-links" aria-label="Navegación principal">
-    <a href="${esc(W)}/trabajos">Trabajos</a><a href="${esc(W)}/#como-funciona">Cómo funciona</a><a href="${esc(W)}/diseno-web-malaga">Servicios</a><a href="${B}/" aria-current="page">Boceto</a><a href="${esc(W)}/blog">Blog</a>
+  <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+    <a href="${esc(W)}/trabajos">Trabajos</a>
+    <a href="${esc(W)}/#como-funciona">Cómo funciona</a>
+    <a href="${esc(W)}/diseno-web-malaga">Servicios</a>
+    <a href="${esc(W)}/#packs">Packs</a>
+    <a href="${esc(W)}/#preguntas">Preguntas</a>
+    <a href="${esc(W)}/blog">Blog</a>
+    <a class="nav-boceto" href="${B}/" aria-current="page">Boceto <span class="nav-tag">gratis</span></a>
   </nav>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menú">
+    <span></span><span></span>
+  </button>
   <a class="nav-cta" href="mailto:${esc(C.CONTACTO_EMAIL)}">Escríbeme <span class="arr">→</span></a>
 </header>`;
 }
@@ -30,7 +39,7 @@ function head(title, noindex) {
   return `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)}</title>${noindex ? '<meta name="robots" content="noindex,nofollow">' : ''}<meta name="theme-color" content="#0a0a0a">
 <link rel="preload" href="${B}/fonts/instrument-serif-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="${B}/css/app.css"><link rel="icon" href="${B}/favicon.svg" type="image/svg+xml"></head>`;
+<link rel="stylesheet" href="${B}/css/app.css"><link rel="icon" href="${esc(W)}/favicon.svg" type="image/svg+xml"><link rel="icon" href="${esc(W)}/favicon.ico" sizes="any"></head>`;
 }
 function page({ title, body, noindex }) {
   return `${head(title, noindex)}<body class="plain"><div class="grain" aria-hidden="true"></div>${nav()}${body}${footer()}</body></html>`;
@@ -44,16 +53,23 @@ function boceto(b) {
   const m = isHtml ? `<iframe class="view-frame" src="${f}/${esc(pub.escritorio)}" title="Boceto en móvil" loading="lazy"></iframe>` : pub.movil ? `<img src="${f}/${esc(pub.movil)}" alt="Boceto de ${esc(b.negocio.nombre)} en móvil">` : '';
   const first = b.contacto.nombre.split(' ')[0];
   return page({ title: `Boceto · ${b.negocio.nombre} · Jaime®`, noindex: true, body: `<main class="view">
-<div class="view-head"><div><span class="label lime">Tu boceto, hecho a mano</span><h1 class="section-title">${esc(b.negocio.nombre)}</h1></div>
-${m ? `<div class="seg" role="tablist" aria-label="Ver en"><button class="on" data-v="d" role="tab" aria-selected="true">Escritorio</button><button data-v="m" role="tab" aria-selected="false">Móvil</button></div>` : ''}</div>
-<div class="view-grid"><div class="view-stage">
-<figure class="frame-d" id="vd"><div class="chrome"><span></span><span></span><span></span><b>boceto · ${esc(b.negocio.nombre)}</b></div>${d}</figure>
-${m ? `<figure class="frame-m" id="vm" hidden><div class="notch"></div>${m}</figure>` : ''}</div>
-<aside class="view-side"><span class="label">Para ${esc(first)}</span>
-<p class="view-msg">Lo he diseñado a partir de lo que me contaste. Es un <em>boceto</em>: los textos y las fotos los cerramos juntos.</p>
-<p class="sum">¿Qué te parece? Dime lo que te gusta y lo que cambiarías, sin compromiso.</p>
-<a class="btn-lime" href="mailto:${esc(C.CONTACTO_EMAIL)}?subject=${encodeURIComponent('Mi boceto: ' + b.negocio.nombre)}">Contestarte <span class="arr">→</span></a>
-<a class="btn-line" href="${esc(W)}/trabajos">Ver otros trabajos <span class="arr">→</span></a></aside></div></main>
+<div class="view-head">
+  <div><span class="label lime">Tu boceto, hecho a mano</span><h1 class="section-title">${esc(b.negocio.nombre)}</h1></div>
+  ${m ? `<div class="seg" role="tablist" aria-label="Ver en"><button class="on" data-v="d" role="tab" aria-selected="true">Escritorio</button><button data-v="m" role="tab" aria-selected="false">Móvil</button></div>` : ''}
+</div>
+<div class="view-message">
+  <span class="label">Para ${esc(first)}</span>
+  <p class="view-msg">Lo he diseñado a partir de lo que me contaste. Es un <em>boceto</em>: los textos y las fotos los cerramos juntos. ¿Qué te parece? Dime lo que te gusta y lo que cambiarías, sin compromiso.</p>
+  <div class="view-actions">
+    <a class="btn-lime" href="mailto:${esc(C.CONTACTO_EMAIL)}?subject=${encodeURIComponent('Mi boceto: ' + b.negocio.nombre)}">Contestarte <span class="arr">→</span></a>
+    <a class="btn-line" href="${esc(W)}/trabajos">Ver otros trabajos <span class="arr">→</span></a>
+  </div>
+</div>
+<div class="view-stage">
+  <figure class="frame-d" id="vd"><div class="chrome"><span></span><span></span><span></span><b>boceto · ${esc(b.negocio.nombre)}</b></div>${d}</figure>
+  ${m ? `<figure class="frame-m" id="vm" hidden><div class="notch"></div>${m}</figure>` : ''}
+</div>
+</main>
 ${m ? `<script>document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.seg button').forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-selected',x===b)});vd.hidden=b.dataset.v!=='d';vm.hidden=b.dataset.v!=='m'})</script>` : ''}` });
 }
 

@@ -101,14 +101,30 @@ function openFullscreen(){
   fsContent.appendChild(clone);
   const reqFs=fsOverlay.requestFullscreen||fsOverlay.webkitRequestFullscreen||fsOverlay.webkitRequestFullScreen;
   if(reqFs){
+    let fallbackCalled=false;
+    const fallbackTimeout=setTimeout(()=>{
+      if(!fallbackCalled&&!usingNativeFs){
+        fallbackCalled=true;
+        fallbackFullscreen();
+      }
+    },300);
     try{
       reqFs.call(fsOverlay).then(()=>{
+        clearTimeout(fallbackTimeout);
         usingNativeFs=true;
       }).catch(()=>{
-        fallbackFullscreen();
+        clearTimeout(fallbackTimeout);
+        if(!fallbackCalled){
+          fallbackCalled=true;
+          fallbackFullscreen();
+        }
       });
     }catch(e){
-      fallbackFullscreen();
+      clearTimeout(fallbackTimeout);
+      if(!fallbackCalled){
+        fallbackCalled=true;
+        fallbackFullscreen();
+      }
     }
   }else{
     fallbackFullscreen();
@@ -116,7 +132,8 @@ function openFullscreen(){
 }
 function fallbackFullscreen(){
   usingNativeFs=false;
-  fsOverlay.hidden=false;
+  fsOverlay.removeAttribute('hidden');
+  fsOverlay.style.display='flex';
   document.body.style.overflow='hidden';
 }
 function closeFullscreen(){

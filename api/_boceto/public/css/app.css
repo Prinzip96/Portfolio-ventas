@@ -320,13 +320,16 @@ a.u:hover{color:var(--accent);border-color:var(--accent)}
 
 /* Pantalla completa */
 .fullscreen-overlay{position:fixed;inset:0;z-index:100;background:#000;display:flex;align-items:center;justify-content:center;padding:0}
-.fullscreen-close{position:fixed;top:16px;right:16px;z-index:101;display:flex;align-items:center;gap:6px;padding:8px 14px;border:1px solid rgba(244,242,238,.3);border-radius:999px;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--fg);font-size:14px;font-weight:500;cursor:pointer;transition:background .3s ease,border-color .3s ease,opacity .3s ease}
+.fullscreen-close{position:fixed;top:16px;right:16px;z-index:101;display:flex;align-items:center;gap:6px;padding:8px 14px;border:1px solid rgba(244,242,238,.3);border-radius:999px;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--fg);font-size:14px;font-weight:500;cursor:pointer;transition:background .3s ease,border-color .3s ease,opacity .3s ease;pointer-events:auto}
 .fullscreen-close:hover{background:rgba(0,0,0,.95);border-color:var(--accent);opacity:1}
-.fullscreen-content{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
-.fullscreen-content .view-frame{width:100vw;height:100vh;min-height:100vh;max-height:100vh;border:0;margin:0}
+.fullscreen-content{width:100%;height:100%;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.fullscreen-content .view-frame{width:100vw;height:100vh;min-height:100vh;max-height:100vh;border:0;margin:0;pointer-events:auto}
 .fullscreen-content .frame-d,.fullscreen-content .frame-m{width:100vw;height:100vh;max-width:100vw;max-height:100vh;border:0;outline:0;border-radius:0;margin:0;box-shadow:none}
 .fullscreen-content .chrome,.fullscreen-content .notch{display:none}
 .fullscreen-content .scroll{border-radius:0}
+.fullscreen-overlay:fullscreen,.fullscreen-overlay:-webkit-full-screen{width:100vw;height:100vh;padding:0}
+.fullscreen-overlay:fullscreen .fullscreen-content,.fullscreen-overlay:-webkit-full-screen .fullscreen-content{width:100vw;height:100vh}
+.fullscreen-overlay:fullscreen .view-frame,.fullscreen-overlay:-webkit-full-screen .view-frame{width:100vw;height:100vh;min-height:100vh;max-height:100vh}
 
 /* Panel privado */
 .admin .nav-logo{display:flex;align-items:baseline;gap:12px}

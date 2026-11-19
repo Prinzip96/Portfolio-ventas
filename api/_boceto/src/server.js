@@ -187,7 +187,7 @@ r.get('/b/:token/:file', async (req, res) => {
   const buf = name && (await store.readBoceto(b.id, name));
   if (!buf) return res.status(404).end();
   // El HTML del boceto va aislado: no puede leer nada del resto del sitio ni del panel
-  res.set({ 'Cache-Control': 'private, no-store', 'X-Robots-Tag': 'noindex, nofollow', 'Content-Security-Policy': 'sandbox allow-scripts allow-popups allow-popups-to-escape-sandbox' });
+  res.set({ 'Cache-Control': 'private, no-store', 'X-Robots-Tag': 'noindex, nofollow', 'Content-Security-Policy': 'sandbox allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-forms' });
   res.type(store.tipo(name)).send(buf);
 });
 

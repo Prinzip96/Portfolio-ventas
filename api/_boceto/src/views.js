@@ -84,6 +84,7 @@ const fsContent=document.getElementById('fullscreenContent');
 const vd=document.getElementById('vd');
 const vm=document.getElementById('vm');
 const viewStage=document.getElementById('viewStage');
+let usingNativeFs=false;
 ${m ? `const segBtns=document.querySelectorAll('.seg button');
 segBtns.forEach(b=>b.onclick=()=>{
   segBtns.forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-selected',x===b)});
@@ -92,23 +93,67 @@ segBtns.forEach(b=>b.onclick=()=>{
 });` : ''}
 function openFullscreen(){
   const activeFrame=vm&&!vm.hidden?vm:vd;
-  const clone=activeFrame.cloneNode(true);
-  clone.removeAttribute('hidden');
+  const iframe=activeFrame.querySelector('.view-frame');
+  if(!iframe)return;
+  const clone=iframe.cloneNode(true);
   clone.removeAttribute('id');
   fsContent.innerHTML='';
   fsContent.appendChild(clone);
+  const reqFs=fsOverlay.requestFullscreen||fsOverlay.webkitRequestFullscreen||fsOverlay.webkitRequestFullScreen;
+  if(reqFs){
+    try{
+      reqFs.call(fsOverlay).then(()=>{
+        usingNativeFs=true;
+      }).catch(()=>{
+        fallbackFullscreen();
+      });
+    }catch(e){
+      fallbackFullscreen();
+    }
+  }else{
+    fallbackFullscreen();
+  }
+}
+function fallbackFullscreen(){
+  usingNativeFs=false;
   fsOverlay.hidden=false;
   document.body.style.overflow='hidden';
 }
 function closeFullscreen(){
+  if(usingNativeFs){
+    const exitFs=document.exitFullscreen||document.webkitExitFullscreen||document.webkitCancelFullScreen;
+    if(exitFs){
+      try{exitFs.call(document);}catch(e){cleanup();}
+    }else{
+      cleanup();
+    }
+  }else{
+    cleanup();
+  }
+}
+function cleanup(){
+  usingNativeFs=false;
   fsOverlay.hidden=true;
   document.body.style.overflow='';
   fsContent.innerHTML='';
 }
 fsBtn.onclick=openFullscreen;
 fsClose.onclick=closeFullscreen;
-fsOverlay.onclick=e=>{if(e.target===fsOverlay)closeFullscreen()};
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!fsOverlay.hidden)closeFullscreen()});
+document.addEventListener('fullscreenchange',()=>{
+  if(!document.fullscreenElement&&!document.webkitFullscreenElement){
+    cleanup();
+  }
+});
+document.addEventListener('webkitfullscreenchange',()=>{
+  if(!document.fullscreenElement&&!document.webkitFullscreenElement){
+    cleanup();
+  }
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&!usingNativeFs&&!fsOverlay.hidden){
+    closeFullscreen();
+  }
+});
 })();
 </script>` });
 }

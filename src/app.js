@@ -1,36 +1,13 @@
-// En móvil / reduced-motion: J estática y sin Three.js.
-// En escritorio: póster estático → 3D diferido. Wave solo en escritorio (también usa Three).
+// En móvil / reduced-motion: sin Three.js.
+// En escritorio: 3D diferido. Wave solo en escritorio (también usa Three).
 const stage = document.getElementById("stage");
 const canvas = document.getElementById("gl");
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const mobile = matchMedia("(max-width: 760px)").matches;
 const light = reduce || mobile;
 
-function showStaticJ() {
-  if (!stage || stage.querySelector(".j-static-img")) return;
-  document.documentElement.classList.add("j-static");
-  // Sin j-flat el escenario ya ocupa su altura final: si cambiara al llegar el 3D, la página saltaría.
-  if (light) flattenStage();
-  if (canvas) canvas.hidden = true;
-  const pic = document.createElement("picture");
-  pic.className = "j-static-img";
-  pic.setAttribute("aria-hidden", "true");
-  pic.innerHTML =
-    '<source srcset="./assets/j06.webp" type="image/webp" />' +
-    '<img src="./assets/j06.png" alt="" width="1024" height="1024" decoding="async" />';
-  const hero = document.getElementById("top");
-  stage.insertBefore(pic, hero || stage.firstChild);
-  window.__ready = Promise.resolve();
-}
-
 function flattenStage() {
   document.documentElement.classList.add("j-flat");
-}
-
-function clearStaticJ() {
-  stage?.querySelector(".j-static-img")?.remove();
-  if (canvas) canvas.hidden = false;
-  document.documentElement.classList.remove("j-static");
 }
 
 function loadRest() {
@@ -51,12 +28,12 @@ async function load3D() {
   if (window.__ready?.then) {
     await window.__ready.catch(() => {});
   }
-  clearStaticJ();
 }
 
-showStaticJ();
+window.__ready = Promise.resolve();
 
 if (light) {
+  flattenStage();
   bootRest();
 } else {
   const run = () => {

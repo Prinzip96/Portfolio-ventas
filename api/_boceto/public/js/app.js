@@ -21,6 +21,8 @@
   const NOTES = { 1: 'tus colores, aquí ↓', 2: 'tu nombre, arriba ↓', 3: '← así, más o menos', 4: 'tus secciones ↓', 5: 'tus fotos, en el boceto final', 6: 'el de verdad lo hago a mano' };
 
   const DEF = { tipo: 'wordpress', nombre: '', sector: '', ciudad: '', enlace: '', paleta: 'mar', colores: { principal: '#0f4c5c', acento: '#f28c38', fondo: 'claro' }, fuente: 'moderna', estilo: 'limpio', ambiente: [], referencias: '', secciones: ['servicios', 'reservas', 'galeria', 'contacto'], otras: '', objetivos: [], detalle: '' };
+  const DEF_SECCIONES_WEB = ['servicios', 'reservas', 'galeria', 'contacto'];
+  const DEF_SECCIONES_APP = ['autenticacion', 'perfil', 'reservas', 'catalogo'];
   const fresh = () => JSON.parse(JSON.stringify(DEF));
   let st = fresh();
   try { const s = JSON.parse(localStorage.getItem(KEY)); if (s && s.colores) st = Object.assign(st, s); } catch (e) { /* sin guardado */ }
@@ -36,6 +38,19 @@
     mapa: 'Dónde estás y cómo llegar.',
     contacto: 'Formulario, teléfono y horario.'
   };
+  const SEC_DESC_APP = {
+    autenticacion: 'Iniciar sesión, registro y recuperar contraseña.',
+    perfil: 'Ver y editar los datos del usuario.',
+    reservas: 'Reservar citas o mesas desde la app.',
+    pagos: 'Pagar con tarjeta o Bizum.',
+    notificaciones: 'Avisos push para no perderse nada.',
+    catalogo: 'Carta, productos o servicios.',
+    pedidos: 'Hacer pedidos y ver su estado.',
+    chat: 'Mensajes directos con el negocio.',
+    fidelizacion: 'Puntos, descuentos o tarjeta digital.',
+    ubicacion: 'Ver en el mapa y cómo llegar.',
+    panel: 'Estadísticas y gestión del negocio.'
+  };
 
   // ---------- Construir controles ----------
   $('#palettes').innerHTML = M.PALETAS.map(p => `<label class="pal" title="${p.label}"><input type="radio" name="paleta" value="${p.id}"><span class="sw"><i style="background:${p.principal}"></i><i style="background:${p.acento}"></i><i style="background:${p.fondo === 'oscuro' ? '#111315' : p.fondo === 'crema' ? '#f6f1e7' : '#ffffff'}"></i></span><span class="n">${p.label}</span></label>`).join('');
@@ -45,7 +60,13 @@
   $('#objetivos').innerHTML = O.OBJETIVOS.map(([id, l]) => `<label><input type="checkbox" name="objetivo" value="${id}"><span>${l}</span></label>`).join('');
   function buildSections() {
     const box = $('#sections');
-    box.innerHTML = '<legend class="sr">Secciones</legend>' + M.SECCIONES.map(id => `<label class="sec"><input type="checkbox" name="sec" value="${id}"${st.secciones.includes(id) ? ' checked' : ''}><span class="txt"><b>${M.seccionLabel(id, st.sector)}</b><small>${id === 'servicios' ? SEC_DESC.servicios.replace('Lo que ofreces', M.perfil(st.sector).servicios === 'Carta' ? 'Tus platos' : 'Lo que ofreces') : SEC_DESC[id]}</small></span><span class="switch" aria-hidden="true"></span></label>`).join('');
+    const isApp = st.tipo === 'app';
+    const SECS = isApp ? M.SECCIONES_APP : M.SECCIONES;
+    const DESCS = isApp ? SEC_DESC_APP : SEC_DESC;
+    box.innerHTML = '<legend class="sr">Secciones</legend>' + SECS.map(id => {
+      const desc = id === 'servicios' && !isApp ? DESCS.servicios.replace('Lo que ofreces', M.perfil(st.sector).servicios === 'Carta' ? 'Tus platos' : 'Lo que ofreces') : DESCS[id];
+      return `<label class="sec"><input type="checkbox" name="sec" value="${id}"${st.secciones.includes(id) ? ' checked' : ''}><span class="txt"><b>${M.seccionLabel(id, st.sector)}</b><small>${desc}</small></span><span class="switch" aria-hidden="true"></span></label>`;
+    }).join('');
   }
 
   // ---------- Estado → controles ----------
@@ -98,7 +119,14 @@
   const TEXT = ['nombre', 'sector', 'ciudad', 'enlace', 'referencias', 'otras', 'detalle'];
   form.addEventListener('input', e => {
     const t = e.target;
-    if (t.name === 'tipo') st.tipo = t.value;
+    if (t.name === 'tipo') {
+      const oldTipo = st.tipo;
+      st.tipo = t.value;
+      if (oldTipo !== t.value) {
+        st.secciones = (t.value === 'app') ? DEF_SECCIONES_APP : DEF_SECCIONES_WEB;
+        buildSections();
+      }
+    }
     else if (TEXT.includes(t.id)) {
       st[t.id] = t.value;
       if (t.id === 'nombre') clearErr('negocio', t);

@@ -35,6 +35,7 @@
     { id: 'fucsia', label: 'Fucsia', principal: '#c2255c', acento: '#ffd43b', fondo: 'claro' }
   ];
   const SECCIONES = ['servicios', 'sobre', 'reservas', 'galeria', 'opiniones', 'mapa', 'contacto'];
+  const SECCIONES_APP = ['autenticacion', 'perfil', 'reservas', 'pagos', 'notificaciones', 'catalogo', 'pedidos', 'chat', 'fidelizacion', 'ubicacion', 'panel'];
 
   const PERFILES = [
     { id: 'rest', re: /(restaur|bar\b|bares|tasca|marisq|chiringu|pizz|asador|tabern|gastro|cocina|bodeg[oó]n|tapas|arrocer|cervecer|vinoteca|burger|hamburgues|sushi|brasa)/i,
@@ -74,7 +75,9 @@
 
   function seccionLabel(id, sector) {
     const p = perfil(sector);
-    return { servicios: p.servicios, sobre: 'Sobre nosotros', reservas: p.resNav, galeria: 'Galería', opiniones: 'Opiniones', mapa: 'Ubicación', contacto: 'Contacto' }[id];
+    const webLabels = { servicios: p.servicios, sobre: 'Sobre nosotros', reservas: p.resNav, galeria: 'Galería', opiniones: 'Opiniones', mapa: 'Ubicación', contacto: 'Contacto' };
+    const appLabels = { autenticacion: 'Registro e inicio', perfil: 'Perfil de usuario', reservas: 'Reservas/citas', pagos: 'Pagos', notificaciones: 'Notificaciones', catalogo: p.servicios, pedidos: 'Pedidos', chat: 'Chat/mensajes', fidelizacion: 'Fidelización', ubicacion: 'Mapa', panel: 'Panel de gestión' };
+    return webLabels[id] || appLabels[id] || id;
   }
 
   // ---------- Normalizar (también valida lo que llega al servidor) ----------
@@ -83,8 +86,10 @@
   function normalize(c) {
     c = c || {};
     const col = c.colores || {};
+    const tipo = TIPOS[c.tipo] ? c.tipo : 'wordpress';
+    const allowedSecs = tipo === 'app' ? SECCIONES_APP : SECCIONES;
     const out = {
-      tipo: TIPOS[c.tipo] ? c.tipo : 'wordpress',
+      tipo,
       nombre: clean(c.nombre, 40),
       sector: clean(c.sector, 40),
       colores: {
@@ -94,7 +99,7 @@
       },
       fuente: FUENTES[c.fuente] ? c.fuente : 'moderna',
       estilo: ESTILOS[c.estilo] ? c.estilo : 'limpio',
-      secciones: SECCIONES.filter(s => Array.isArray(c.secciones) && c.secciones.includes(s))
+      secciones: allowedSecs.filter(s => Array.isArray(c.secciones) && c.secciones.includes(s))
     };
     return out;
   }
@@ -492,8 +497,27 @@
 
     // ===== App web =====
     function renderApp() {
-      const appSel = sel.length ? sel : ['reservas'];
-      const mods = appSel.map(s => ({ id: s, label: { servicios: P.servicios, sobre: 'Perfil del negocio', reservas: P.resNav, galeria: 'Fotos', opiniones: 'Opiniones', mapa: 'Ubicación', contacto: 'Mensajes' }[s] }));
+      const appSel = sel.length ? sel : ['autenticacion', 'perfil', 'reservas', 'catalogo'];
+      const appLabels = { 
+        autenticacion: 'Acceso', 
+        perfil: 'Perfil', 
+        servicios: P.servicios, 
+        sobre: 'Perfil del negocio', 
+        reservas: P.resNav, 
+        pagos: 'Pagos', 
+        notificaciones: 'Notificaciones', 
+        catalogo: P.servicios, 
+        pedidos: 'Pedidos', 
+        chat: 'Mensajes', 
+        fidelizacion: 'Fidelización', 
+        ubicacion: 'Ubicación', 
+        galeria: 'Fotos', 
+        opiniones: 'Opiniones', 
+        mapa: 'Ubicación', 
+        contacto: 'Mensajes',
+        panel: 'Panel' 
+      };
+      const mods = appSel.map(s => ({ id: s, label: appLabels[s] || s }));
       const sideDark = cfg.estilo !== 'limpio';
       const sideBg = cfg.estilo === 'redondeado' ? T.principal : cfg.estilo === 'editorial' ? (T.dark ? '#0a0b0c' : T.text) : T.surf;
       const sideFg = cfg.estilo === 'limpio' ? T.text : on(sideBg);
@@ -504,7 +528,102 @@
       const chip = (x, y2, l, fill) => { const w = tw(l, 11, 1.1) + 18; out.push(rect(x - w, y2, w, 22, fill, 11) + text(x - w / 2, y2 + 15, l, { size: 11, weight: F.bb, fill: on(fill), anchor: 'middle' })); };
       function modBody(m, x, y2, w, h) {
         const rows = mob ? 3 : 4;
-        if (m.id === 'reservas') {
+        if (m.id === 'autenticacion') {
+          const fields = ['Email', 'Contraseña'];
+          for (let i = 0; i < 2; i++) {
+            const ry = y2 + i * 60;
+            out.push(text(x, ry + 12, fields[i], { size: 12, fill: T.muted, weight: F.bb }));
+            out.push(rect(x, ry + 24, w, 36, T.alt, 8));
+          }
+          const by = y2 + 140;
+          out.push(rect(x, by, w, 44, T.principal, 11) + text(x + w / 2, by + 28, 'Iniciar sesión', { size: 14, weight: F.bb, fill: T.onP, anchor: 'middle' }));
+          out.push(text(x + w / 2, by + 64, '¿Olvidaste tu contraseña?', { size: 13, fill: T.ink, anchor: 'middle' }));
+        } else if (m.id === 'perfil') {
+          out.push(`<circle cx="${x + 32}" cy="${y2 + 32}" r="32" fill="${T.principal}"/>` + text(x + 32, y2 + 40, initials, { head: true, size: 20, fill: T.onP, anchor: 'middle' }));
+          out.push(text(x + 80, y2 + 28, wrap(name, 15, w - 90, F.k, 1)[0], { head: true, size: 15 }));
+          out.push(text(x + 80, y2 + 48, 'usuario@email.com', { size: 12, fill: T.muted }));
+          const items = ['Mis datos', 'Preferencias', 'Privacidad'];
+          items.forEach((it, i) => {
+            const ry = y2 + 84 + i * 44;
+            out.push(rect(x, ry, w, 36, T.alt, 8));
+            out.push(text(x + 16, ry + 23, it, { size: 14, weight: F.bb }));
+            out.push(text(x + w - 16, ry + 23, '›', { size: 18, fill: T.muted, anchor: 'end' }));
+          });
+        } else if (m.id === 'pagos') {
+          out.push(rect(x, y2, w, 76, T.alt, 8));
+          out.push(rect(x + 16, y2 + 16, 44, 28, T.principal, 6) + text(x + 38, y2 + 35, '💳', { size: 18, anchor: 'middle' }));
+          out.push(text(x + 72, y2 + 28, '**** 1234', { size: 14, weight: F.bb }));
+          out.push(text(x + 72, y2 + 46, 'Tarjeta principal', { size: 12, fill: T.muted }));
+          const items = ['Bizum', 'PayPal', 'Añadir tarjeta'];
+          items.forEach((it, i) => {
+            const ry = y2 + 92 + i * 44;
+            out.push(rect(x, ry, w, 36, T.surf, 8, ` stroke="${T.line}"`));
+            out.push(text(x + 16, ry + 23, it, { size: 13, weight: F.bb }));
+          });
+        } else if (m.id === 'notificaciones') {
+          for (let i = 0; i < rows; i++) {
+            const ry = y2 + i * 54;
+            out.push(`<circle cx="${x + 20}" cy="${ry + 20}" r="20" fill="${i === 0 ? T.acento : T.alt}"/>` + rect(x + 14, ry + 15, 12, 10, i === 0 ? T.onA : T.muted, 2));
+            out.push(text(x + 52, ry + 16, i === 0 ? 'Nueva reserva confirmada' : 'Tu pedido está en camino', { size: 13, weight: F.bb }));
+            out.push(text(x + 52, ry + 34, 'Hace ' + ['2 min', '1 hora', '3 horas', 'ayer'][i], { size: 11, fill: T.muted }));
+          }
+        } else if (m.id === 'catalogo') {
+          P.items.slice(0, rows).forEach((it, i) => {
+            const ry = y2 + i * 46;
+            out.push(photo(x, ry, 34, 34, i + 1, false, 8));
+            out.push(text(x + 48, ry + 22, it, { size: 14, weight: F.bb }));
+            out.push(rect(x + w - 40, ry + 7, 40, 22, i === 2 ? T.line : T.principal, 11) + `<circle cx="${i === 2 ? x + w - 29 : x + w - 11}" cy="${ry + 18}" r="8" fill="#fff"/>`);
+          });
+        } else if (m.id === 'pedidos') {
+          for (let i = 0; i < rows; i++) {
+            const ry = y2 + i * 46;
+            const estados = ['Preparando', 'En camino', 'Entregado', 'Entregado'];
+            const colores = [T.acento, T.principal, mix(T.principal, T.bg, 0.2), mix(T.principal, T.bg, 0.2)];
+            out.push(rect(x, ry, 70, 24, colores[i], 6) + text(x + 35, ry + 16, estados[i], { size: 11, weight: F.bb, fill: i < 2 ? on(colores[i]) : T.muted, anchor: 'middle' }));
+            out.push(text(x + 82, ry + 16, 'Pedido #' + (1234 + i), { size: 14, weight: F.bb }));
+            out.push(text(x + w - 8, ry + 16, ['Hoy', 'Ayer', '3 días', '5 días'][i], { size: 12, fill: T.muted, anchor: 'end' }));
+          }
+        } else if (m.id === 'chat') {
+          for (let i = 0; i < rows; i++) {
+            const ry = y2 + i * 44;
+            out.push(`<circle cx="${x + 16}" cy="${ry + 16}" r="16" fill="${T.alt}"/>` + rect(x + 9, ry + 11, 14, 10, T.ink, 2));
+            out.push(text(x + 44, ry + 10, i === 0 ? name : 'Soporte', { size: 14, weight: F.bb }));
+            out.push(text(x + 44, ry + 28, i === 0 ? 'Tu reserva está confirmada' : 'Gracias por escribirnos', { size: 12, fill: T.muted }));
+            if (i === 0) chip(x + w, ry + 4, 'Nuevo', T.acento);
+          }
+        } else if (m.id === 'fidelizacion') {
+          out.push(rect(x, y2, w, 88, T.principal, 10));
+          out.push(text(x + 20, y2 + 32, 'Tus puntos', { size: 14, fill: T.onP, weight: F.bb }));
+          out.push(text(x + 20, y2 + 64, '1,240', { head: true, size: 32, fill: T.onP }));
+          out.push(text(x + w - 20, y2 + 67, '🎁', { size: 28, anchor: 'end' }));
+          const items = ['10% en tu próximo pedido', 'Envío gratis', 'Regalo sorpresa'];
+          items.forEach((it, i) => {
+            const ry = y2 + 104 + i * 44;
+            out.push(rect(x, ry, w, 36, T.surf, 8, ` stroke="${T.line}"`));
+            out.push(text(x + 16, ry + 23, it, { size: 13, weight: F.bb }));
+            out.push(text(x + w - 16, ry + 23, (1000 - i * 300) + ' pts', { size: 12, fill: T.muted, anchor: 'end' }));
+          });
+        } else if (m.id === 'panel') {
+          const kpis = [['Ventas hoy', '840 €'], ['Pedidos', '24'], ['Pendientes', '3']];
+          kpis.forEach(([l, v], i) => {
+            const kx = x + i * (w / 3);
+            out.push(text(kx + 8, y2 + 14, l, { size: 11, fill: T.muted, weight: F.bb }));
+            out.push(text(kx + 8, y2 + 46, v, { head: true, size: 24, fill: i === 2 ? T.ink : T.text }));
+          });
+          const items = ['Ver todos los pedidos', 'Gestión de stock', 'Informes'];
+          items.forEach((it, i) => {
+            const ry = y2 + 76 + i * 44;
+            out.push(rect(x, ry, w, 36, T.alt, 8));
+            out.push(text(x + 16, ry + 23, it, { size: 13, weight: F.bb }));
+            out.push(text(x + w - 16, ry + 23, '›', { size: 18, fill: T.muted, anchor: 'end' }));
+          });
+        } else if (m.id === 'ubicacion') {
+          const k2 = id + 'au' + gi++; defs.push(`<clipPath id="${k2}">${rect(x, y2, w, h, '#000', 10)}</clipPath>`);
+          let s = rect(x, y2, w, h, mix(T.bg, T.text, 0.06), 0);
+          [0.3, 0.65].forEach(t => { s += rect(x, y2 + h * t, w, 10, T.dark ? mix(T.bg, '#fff', .15) : '#fff', 0); s += rect(x + w * t, y2, 10, h, T.dark ? mix(T.bg, '#fff', .15) : '#fff', 0); });
+          s += `<circle cx="${x + w * 0.5}" cy="${y2 + h * 0.48}" r="12" fill="${T.principal}"/><circle cx="${x + w * 0.5}" cy="${y2 + h * 0.48}" r="4" fill="${T.onP}"/>`;
+          out.push(`<g clip-path="url(#${k2})">${s}</g>`);
+        } else if (m.id === 'reservas') {
           const times = ['13:30', '14:00', '20:30', '21:00'];
           for (let i = 0; i < rows; i++) {
             const ry = y2 + i * 44;
@@ -646,5 +765,5 @@
     };
   }
 
-  return { topColor, TIPOS, FUENTES, ESTILOS, FONDOS, PALETAS, SECCIONES, perfil, seccionLabel, normalize, render, resumen, contrast, on };
+  return { topColor, TIPOS, FUENTES, ESTILOS, FONDOS, PALETAS, SECCIONES, SECCIONES_APP, perfil, seccionLabel, normalize, render, resumen, contrast, on };
 });

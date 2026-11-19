@@ -83,10 +83,11 @@ async function runTests() {
     });
     const page2 = await context2.newPage();
     
-    // Capturar errores de JavaScript
+    // Capturar logs de JavaScript
     page2.on('console', msg => {
-      if (msg.type() === 'error') {
-        console.log('[Browser Error]', msg.text());
+      const text = msg.text();
+      if (text.startsWith('[FS]') || msg.type() === 'error') {
+        console.log(`[Browser ${msg.type()}]`, text);
       }
     });
     page2.on('pageerror', err => {

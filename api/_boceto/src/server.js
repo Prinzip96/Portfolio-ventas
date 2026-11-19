@@ -182,12 +182,13 @@ r.get('/b/:token', async (req, res) => {
 });
 r.get('/b/:token/:file', async (req, res) => {
   const b = await store.findByToken(req.params.token);
-  const ok = b && [b.publicado.escritorio, b.publicado.movil].includes(req.params.file);
-  const buf = ok && (await store.readBoceto(b.id, req.params.file));
+  const pub = b ? [b.publicado.escritorio, b.publicado.movil].filter(Boolean) : [];
+  const name = pub.find((f) => f === req.params.file || f === req.params.file + '.html');
+  const buf = name && (await store.readBoceto(b.id, name));
   if (!buf) return res.status(404).end();
   // El HTML del boceto va aislado: no puede leer nada del resto del sitio ni del panel
   res.set({ 'Cache-Control': 'private, no-store', 'X-Robots-Tag': 'noindex, nofollow', 'Content-Security-Policy': 'sandbox allow-scripts allow-popups allow-popups-to-escape-sandbox' });
-  res.type(store.tipo(req.params.file)).send(buf);
+  res.type(store.tipo(name)).send(buf);
 });
 
 r.get('/privacidad', (req, res) => res.send(V.privacidad()));

@@ -147,7 +147,8 @@ document.addEventListener('webkitfullscreenchange',()=>{
   }
 });
 document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'&&!usingNativeFs&&!fsOverlay.hidden){
+  if(e.key==='Escape'&&!fsOverlay.hasAttribute('hidden')){
+    e.preventDefault();
     closeFullscreen();
   }
 });

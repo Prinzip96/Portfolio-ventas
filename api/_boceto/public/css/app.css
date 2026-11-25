@@ -433,6 +433,7 @@ a.u:hover{color:var(--accent);border-color:var(--accent)}
 /* Pantallas grandes: en el último paso se ven las dos vistas */
 @media (max-width:1399px){.screens[data-device=both] .frame-m{display:none}}
 @media (max-width:1100px){.nav-links{display:none}}
+@media (max-width:1100px){.nav.is-open .nav-links{display:flex}}
 
 /* Móvil y tableta */
 @media (max-width:960px){

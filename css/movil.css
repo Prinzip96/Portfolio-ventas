@@ -1,0 +1,334 @@
+/* ==========================================================================
+   Arreglos solo para móvil / tablet estrecha.
+   El escritorio (≥1001px, y el hero a ≥761px) debe verse como antes.
+   ========================================================================== */
+
+/* Utilidad real: oculta visualmente y deja el texto para lectores de pantalla.
+   En escritorio el prefijo del H1 sigue visible: así es como se veía la home. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (min-width: 761px) {
+  .hero-title > .sr-only {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
+  }
+}
+
+/* Galería de trabajos del fallback plano (j-flat). Oculta con el anillo 3D. */
+.works-flat {
+  display: none;
+}
+
+html.j-flat .works-flat {
+  display: block;
+  padding: 24px 0 56px;
+  border-top: 1px solid var(--line-soft, rgba(244, 242, 238, 0.12));
+  background: var(--bg-soft, #101011);
+  scroll-margin-top: 110px;
+}
+
+html.j-flat .jstage-anchor {
+  position: static;
+  top: auto;
+  left: auto;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  scroll-margin-top: 110px;
+}
+
+.works-flat-grid {
+  display: grid;
+  gap: 14px;
+  padding: 0 var(--pad, 20px);
+}
+
+.works-flat-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #111112;
+  border: 1px solid var(--line, rgba(244, 242, 238, 0.12));
+  color: inherit;
+  text-decoration: none;
+}
+
+.works-flat-card:hover,
+.works-flat-card:focus-visible {
+  border-color: rgba(188, 255, 77, 0.35);
+}
+
+.works-flat-shot {
+  position: relative;
+  background: var(--bg, #0a0a0a);
+  border-bottom: 1px solid var(--line, rgba(244, 242, 238, 0.12));
+}
+
+.works-flat-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 14px;
+  border-bottom: 1px solid var(--line, rgba(244, 242, 238, 0.12));
+  font-size: 13px;
+  color: var(--muted, #8b8b86);
+}
+
+.works-flat-bar i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #18181a;
+}
+
+.works-flat-bar span {
+  margin-left: 12px;
+}
+
+.works-flat-shot img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+}
+
+.works-flat-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 20px 24px;
+}
+
+.works-flat-body .k {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted, #8b8b86);
+}
+
+.works-flat-body h3 {
+  margin: 0;
+  font-family: var(--font-display, Georgia, serif);
+  font-weight: 400;
+  font-size: clamp(26px, 7vw, 36px);
+  line-height: 1.04;
+}
+
+.works-flat-body p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--muted, #8b8b86);
+}
+
+.works-flat-body .go {
+  margin-top: 6px;
+  color: var(--accent, #bcff4d);
+  font-weight: 500;
+}
+
+.works-flat-card.is-ext .go {
+  color: var(--muted, #8b8b86);
+}
+
+.works-flat-more {
+  margin: 22px var(--pad, 20px) 0;
+}
+
+.works-flat-more a {
+  color: var(--accent, #bcff4d);
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* El chat recorta la 4.ª opción si el cuerpo no puede hacer scroll dentro del panel. */
+.chat .chat-panel {
+  min-height: 0;
+}
+
+.chat .chat-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 1000px) {
+  .nav.is-stuck,
+  .sv-nav.is-stuck {
+    background: rgba(10, 10, 10, 0.96);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  #talkFloat,
+  .talk-float,
+  .talk-float.is-on {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  body.has-cookie-bar:has(.talk-float.is-on) {
+    --cookie-clearance: 108px;
+  }
+
+  /* Zonas de toque ≥ 44px */
+  .nav-cta,
+  .sv-pill,
+  a.nav-cta {
+    min-height: 44px;
+    min-width: 44px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+  }
+
+  .nav-toggle,
+  .sv-nav-toggle {
+    width: 44px;
+    height: 44px;
+  }
+
+  .footer-col {
+    gap: 4px;
+  }
+
+  .footer a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .legal-back,
+  .legal-brand {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .link-lime {
+    min-height: 44px;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .chat .chat-x {
+    width: 44px;
+    height: 44px;
+    flex: none;
+    font-size: 16px;
+  }
+
+  .chat-prev {
+    min-height: 44px;
+  }
+
+  /* Etiquetas de 11–12px → al menos 13px */
+  .label,
+  .footer-label,
+  .pack-badge,
+  .pack-tax,
+  .pack-from,
+  .step-num,
+  .wave-kicker,
+  .wave-hint,
+  .sv-eyebrow,
+  .nav-tag,
+  .tw-card .k,
+  .tw-card-bar span,
+  .chat-tag,
+  .chat-count,
+  .chat-x,
+  .orbit-plate .case-index,
+  .orbit-plate .case-tags {
+    font-size: 13px;
+  }
+
+  /* Chat: tarjetas un poco más bajas y scroll interno claro */
+  .chat {
+    padding: 12px;
+    align-items: stretch;
+  }
+
+  .chat .chat-panel {
+    max-height: min(92svh, 100%);
+    width: 100%;
+  }
+
+  .chat .chat-q h3 {
+    margin-bottom: 12px;
+    font-size: clamp(24px, 7vw, 32px);
+  }
+
+  .chat .chat-picks {
+    gap: 10px;
+  }
+
+  .chat .pick {
+    padding: 14px 16px;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 760px) {
+  /* Cubre el nav fijo (el fallback plano había dejado 8px). */
+  html.j-flat .jstage .hero {
+    padding: 116px var(--pad, 20px) max(24px, env(safe-area-inset-bottom));
+    justify-content: flex-start;
+  }
+
+  html {
+    scroll-padding-top: 110px;
+  }
+
+  /* Precio cerrado: sin reservar 640px para un canvas que en móvil no se carga. */
+  .wave.precio {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .wave.precio .wave-stage,
+  .wave.precio #waveCanvas {
+    display: none;
+  }
+
+  .wave.precio::before {
+    display: none;
+  }
+
+  .wave.precio .wave-copy {
+    position: static;
+    top: auto;
+    left: auto;
+    right: auto;
+    padding: 56px var(--pad, 20px) 48px;
+    pointer-events: auto;
+  }
+}

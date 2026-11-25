@@ -558,3 +558,18 @@ body.chat-open {
   .talk-float { display: inline-flex; }
 }
 
+
+/* Móvil: cierre ≥44px y el cuerpo del panel hace scroll de verdad */
+.chat .chat-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+@media (max-width: 1000px) {
+  .chat .chat-x {
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+  }
+}

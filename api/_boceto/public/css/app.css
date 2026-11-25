@@ -488,3 +488,45 @@ a.u:hover{color:var(--accent);border-color:var(--accent)}
 @media (max-width:420px){.palettes{gap:8px}.pal .sw{height:50px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 @media (hover:none){.btn-lime:hover{background:var(--accent)}}
+
+/* Arreglos móviles (tap targets, etiquetas, hamburguesa ya prevista) */
+@media (max-width: 1000px) {
+  .nav.is-stuck,
+  .nav.is-open {
+    background: rgba(10, 10, 10, 0.96);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .nav-cta {
+    min-height: 44px;
+    min-width: 44px;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+  }
+  .nav-toggle {
+    width: 44px;
+    height: 44px;
+  }
+  .footer-col { gap: 4px; }
+  .footer a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .prev,
+  #back {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 8px 0;
+    display: inline-flex;
+    align-items: center;
+  }
+  .footer-label,
+  .status,
+  .label,
+  .tag,
+  #stepCount {
+    font-size: 13px;
+  }
+}

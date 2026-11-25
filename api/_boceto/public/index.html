@@ -35,9 +35,12 @@
 
 <header class="nav" id="nav">
   <a class="nav-logo" href="__WEB__">Jaime<sup>®</sup></a>
-  <nav class="nav-links" aria-label="Navegación principal">
+  <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
     <a href="__WEB__/trabajos">Trabajos</a><a href="__WEB__/#como-funciona">Cómo funciona</a><a href="__WEB__/diseno-web-malaga">Servicios</a><a href="__BASE__" aria-current="page">Boceto</a><a href="__WEB__/blog">Blog</a>
   </nav>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menú">
+    <span></span><span></span>
+  </button>
   <a class="nav-cta" href="mailto:__CONTACTO__">Escríbeme <span class="arr">→</span></a>
 </header>
 
@@ -202,6 +205,7 @@
   <div class="footer-col"><span class="footer-label">Legal</span><a href="__WEB__/aviso-legal">Aviso legal</a><a href="__BASE__/privacidad">Privacidad</a></div>
   <p class="footer-year">© 2026 Estudio Jota</p>
 </footer>
+<script>(()=>{const nav=document.getElementById("nav");if(!nav)return;const btn=nav.querySelector(".nav-toggle");const links=nav.querySelector(".nav-links");if(!btn||!links)return;const setOpen=(open)=>{nav.classList.toggle("is-open",open);document.body.classList.toggle("nav-open",open);btn.setAttribute("aria-expanded",open?"true":"false");btn.setAttribute("aria-label",open?"Cerrar menú":"Abrir menú")};btn.addEventListener("click",()=>setOpen(!nav.classList.contains("is-open")));links.querySelectorAll("a").forEach((a)=>a.addEventListener("click",()=>setOpen(false)));addEventListener("keydown",(e)=>{if(e.key==="Escape")setOpen(false)})})();</script>
 <script src="__BASE__/js/mockup.js?v=__V__"></script>
 <script src="__BASE__/js/opciones.js?v=__V__"></script>
 <script src="__BASE__/js/app.js?v=__V__"></script>

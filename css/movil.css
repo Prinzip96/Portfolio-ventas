@@ -332,3 +332,154 @@ html.j-flat .jstage-anchor {
     pointer-events: auto;
   }
 }
+
+/* ——— V2: que se pueda usar con un pulgar. Solo ≤1000px; el escritorio no cambia. ——— */
+@media (max-width: 1000px) {
+  html {
+    scroll-padding-top: 96px;
+    scroll-padding-bottom: 80px;
+  }
+
+  /* Cabecera simple: logo + menú. El «Escríbeme» pasa al menú abierto. */
+  .nav:not(.is-open) .nav-cta,
+  .sv-nav:not(.is-open) .sv-pill {
+    display: none !important;
+  }
+
+  .nav.is-open .nav-cta,
+  .sv-nav.is-open .sv-pill {
+    display: inline-flex !important;
+    position: fixed;
+    left: 20px;
+    right: 20px;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    z-index: 80;
+    margin: 0;
+    width: auto;
+    justify-content: center;
+    min-height: 48px;
+    padding: 12px 22px;
+    box-sizing: border-box;
+  }
+
+  .nav.is-open .nav-links,
+  .sv-nav.is-open .sv-links {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Texto de lectura a 16px; las etiquetas pequeñas ya van a 13px arriba. */
+  .hero-sub,
+  .orbit-desc,
+  .pack p,
+  .pack-desc,
+  .wave-copy p,
+  .faq-a,
+  .final-text,
+  .tw-hero p,
+  .tw-card-body p,
+  .sv-lead,
+  .sv-copy,
+  .post-body p,
+  .blog-lead,
+  .legal-wrap p,
+  .legal-wrap li,
+  .medida-card p {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  /* Ritmo un poco más holgado en bloques largos */
+  .pack-grid {
+    gap: 28px;
+  }
+
+  .hero-actions > * {
+    min-height: 48px;
+  }
+
+  .pack-btn,
+  .btn-lime,
+  .btn-line,
+  .btn-big,
+  .final-actions a,
+  .final-actions button {
+    min-height: 48px;
+  }
+
+  /* Cookie: una sola línea compacta, botón 44px, y sitio abajo en toda la página */
+  body.has-cookie-bar {
+    --cookie-clearance: 72px;
+    padding-bottom: calc(var(--cookie-clearance) + env(safe-area-inset-bottom, 0px));
+  }
+
+  body.has-cookie-bar .cookie-bar {
+    left: 12px;
+    right: 12px;
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    flex-wrap: nowrap;
+    gap: 10px;
+    padding: 8px 8px 8px 12px;
+    max-width: none;
+    border-radius: 16px;
+  }
+
+  body.has-cookie-bar .cookie-bar p {
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  body.has-cookie-bar .cookie-ok {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  /* Chat a pantalla casi completa, fácil de cerrar, sin tapar el gesto de atrás */
+  .chat {
+    padding: 8px;
+    align-items: stretch;
+  }
+
+  .chat .chat-panel {
+    max-height: min(94svh, 100%);
+    width: 100%;
+  }
+}
+
+@media (max-width: 760px) {
+  /* En pantallas bajas (Safari con barras) el hero no empuja los CTAs fuera */
+  html.j-flat .jstage .hero {
+    padding: 108px var(--pad, 20px) calc(max(20px, env(safe-area-inset-bottom, 0px)) + var(--cookie-clearance, 0px));
+  }
+
+  html.j-flat .jstage .hero-title {
+    font-size: clamp(34px, 9.4vw, 48px);
+    line-height: 1.08;
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 760px) and (max-height: 740px) {
+  html.j-flat .jstage .hero-title {
+    font-size: clamp(32px, 8.4vw, 42px);
+    margin-bottom: 8px;
+  }
+  .hero-sub {
+    margin-bottom: 12px;
+  }
+  .hero-meta {
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .hero-actions {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 760px) and (max-height: 740px) {
+  .hero-meta {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 16px;
+  }
+}

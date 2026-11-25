@@ -573,3 +573,56 @@ body.chat-open {
     font-size: 16px;
   }
 }
+
+/* V2 móvil: barra de cookies compacta (este archivo carga después de movil.css). */
+@media (max-width: 1000px) {
+  body.has-cookie-bar {
+    --cookie-clearance: 72px;
+    padding-bottom: calc(var(--cookie-clearance) + env(safe-area-inset-bottom, 0px));
+  }
+
+  body.has-cookie-bar .cookie-bar {
+    left: 12px;
+    right: 12px;
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 8px 8px 12px;
+    max-width: none;
+    border-radius: 16px;
+  }
+
+  body.has-cookie-bar .cookie-bar p {
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  body.has-cookie-bar .cookie-ok {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  body.has-cookie-bar:has(.talk-float.is-on) {
+    --cookie-clearance: 72px;
+  }
+
+  body.has-cookie-bar:has(.talk-float.is-on) .cookie-bar {
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media (max-width: 1000px) and (max-height: 740px) {
+  body.has-cookie-bar {
+    --cookie-clearance: 58px;
+  }
+  body.has-cookie-bar .cookie-bar {
+    padding: 6px 6px 6px 12px;
+  }
+  body.has-cookie-bar .cookie-bar p {
+    font-size: 12px;
+    line-height: 1.3;
+  }
+}

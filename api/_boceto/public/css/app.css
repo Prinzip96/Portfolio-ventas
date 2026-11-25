@@ -531,3 +531,126 @@ a.u:hover{color:var(--accent);border-color:var(--accent)}
     font-size: 13px;
   }
 }
+
+/* Experiencia de uso en móvil: titular primero, muestra compacta, CTA sin tapar. Escritorio igual. */
+.stage-toggle{display:none}
+
+@media (max-width:1000px){
+  .nav:not(.is-open) .nav-cta{display:none}
+  .nav.is-open .nav-cta{
+    display:inline-flex;
+    position:fixed;
+    left:20px;
+    right:20px;
+    bottom:calc(16px + env(safe-area-inset-bottom,0px));
+    z-index:80;
+    margin:0;
+    justify-content:center;
+    min-height:48px;
+    width:auto;
+  }
+  .nav.is-open .nav-links{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+}
+
+@media (max-width:960px){
+  :root{--foot-h:calc(12px + 56px + 12px + env(safe-area-inset-bottom,0px))}
+  html{scroll-padding-top:calc(var(--navh) + 12px);scroll-padding-bottom:calc(var(--foot-h) + var(--kb,0px) + 16px)}
+
+  .stage-toggle{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    margin-left:auto;
+    min-height:44px;
+    min-width:44px;
+    padding:8px 14px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:transparent;
+    color:var(--fg);
+    font:inherit;
+    font-size:14px;
+    font-weight:500;
+    cursor:pointer;
+  }
+
+  .stage-bar{display:flex;align-items:center;gap:10px;padding:6px 16px;min-height:48px}
+  .stage-bar .status{font-size:13px}
+
+  /* Ya no es sticky ni se come la primera pantalla. Por defecto, solo la barra. */
+  .stage{
+    order:0;
+    position:relative;
+    top:auto;
+    z-index:20;
+    height:auto !important;
+    min-height:0 !important;
+    max-height:none;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .stage:not(.is-expanded) .screens,
+  .stage:not(.is-expanded) .stage-note,
+  .stage:not(.is-expanded) .seg{display:none !important}
+
+  .stage.is-expanded .screens{
+    height:168px;
+    max-height:168px;
+    overflow:hidden;
+    padding:6px 16px 8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .stage.is-expanded .frame-d{
+    height:156px;
+    max-height:156px;
+    width:min(100%,280px);
+    align-self:center;
+  }
+  .stage.is-expanded .frame-m{
+    height:156px;
+    max-height:156px;
+    width:auto;
+    max-width:100px;
+    aspect-ratio:9/19;
+    align-self:center;
+  }
+  .stage.is-expanded .frame-m .scroll{max-height:120px;overflow:hidden}
+  /* La nota ya está en el texto del formulario; en móvil ocupa demasiado. */
+  .stage.is-expanded .stage-note{display:none}
+
+  .panel{order:1}
+  .panel-top{padding:8px 20px 6px}
+  #f,.done{overflow:visible;padding:16px 20px calc(28px + var(--foot-h) + var(--kb,0px))}
+  .title{font-size:clamp(30px,8vw,38px);line-height:1.08;margin:8px 0 12px}
+  .sub{font-size:16px;line-height:1.55;margin-bottom:18px}
+  .q{font-size:clamp(26px,7vw,32px);line-height:1.12;margin-bottom:14px}
+  .pick{min-height:44px;padding:16px 16px}
+  .pick-name{font-size:clamp(22px,6vw,26px)}
+  .chips button,.seg button{
+    min-height:44px;
+    padding-left:16px;
+    padding-right:16px;
+  }
+  .field>span{font-size:13px}
+  .field input,.field textarea{
+    font-size:17px;
+    scroll-margin-top:calc(var(--navh) + 16px);
+    scroll-margin-bottom:calc(var(--foot-h) + var(--kb,0px) + 20px);
+  }
+  .drop-zone,.drop-b{
+    min-height:44px;
+  }
+  .panel-foot{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:var(--kb,0px);
+    z-index:70;
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));
+  }
+  .panel-foot .btn-lime{min-height:52px}
+  .footer{padding-bottom:calc(32px + var(--foot-h) + var(--kb,0px))}
+  body.nav-open .panel-foot{visibility:hidden;pointer-events:none}
+}

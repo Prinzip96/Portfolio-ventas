@@ -52,6 +52,7 @@
         <button type="button" class="on" data-device="desktop" role="tab" aria-selected="true">Escritorio</button>
         <button type="button" data-device="mobile" role="tab" aria-selected="false">Móvil</button>
       </div>
+      <button type="button" class="stage-toggle" id="stageToggle" aria-expanded="false" aria-controls="screens">Ver</button>
     </div>
     <div class="screens" id="screens" data-device="desktop">
       <div class="frame-d">
@@ -206,6 +207,7 @@
   <p class="footer-year">© 2026 Estudio Jota</p>
 </footer>
 <script>(()=>{const nav=document.getElementById("nav");if(!nav)return;const btn=nav.querySelector(".nav-toggle");const links=nav.querySelector(".nav-links");if(!btn||!links)return;const setOpen=(open)=>{nav.classList.toggle("is-open",open);document.body.classList.toggle("nav-open",open);btn.setAttribute("aria-expanded",open?"true":"false");btn.setAttribute("aria-label",open?"Cerrar menú":"Abrir menú")};btn.addEventListener("click",()=>setOpen(!nav.classList.contains("is-open")));links.querySelectorAll("a").forEach((a)=>a.addEventListener("click",()=>setOpen(false)));addEventListener("keydown",(e)=>{if(e.key==="Escape")setOpen(false)})})();</script>
+<script>(()=>{const stage=document.getElementById("stage");const btn=document.getElementById("stageToggle");const mq=window.matchMedia("(max-width:960px)");const setExpanded=(open)=>{if(!stage||!btn)return;stage.classList.toggle("is-expanded",open);btn.setAttribute("aria-expanded",open?"true":"false");btn.textContent=open?"Cerrar":"Ver"};const auto=()=>{if(!stage||!btn)return;if(!mq.matches){stage.classList.remove("is-expanded");btn.setAttribute("aria-expanded","false");btn.textContent="Ver";return}setExpanded(document.body.dataset.step==="3")};if(btn)btn.addEventListener("click",()=>setExpanded(!stage.classList.contains("is-expanded")));if(window.MutationObserver)new MutationObserver(auto).observe(document.body,{attributes:true,attributeFilter:["data-step"]});if(mq.addEventListener)mq.addEventListener("change",auto);else if(mq.addListener)mq.addListener(auto);auto();const vv=window.visualViewport;const syncKb=()=>{if(!vv)return;const inset=Math.max(0,window.innerHeight-vv.height-vv.offsetTop);document.documentElement.style.setProperty("--kb",inset+"px");const el=document.activeElement;if(el&&(el.tagName==="INPUT"||el.tagName==="TEXTAREA")){try{el.scrollIntoView({block:"center",behavior:"auto"})}catch(e){}}};if(vv){vv.addEventListener("resize",syncKb);vv.addEventListener("scroll",syncKb)}document.addEventListener("focusin",e=>{if(e.target&&e.target.matches&&e.target.matches("input,textarea"))setTimeout(syncKb,250)});document.addEventListener("focusout",()=>{document.documentElement.style.setProperty("--kb","0px")})})();</script>
 <script src="__BASE__/js/mockup.js?v=__V__"></script>
 <script src="__BASE__/js/opciones.js?v=__V__"></script>
 <script src="__BASE__/js/app.js?v=__V__"></script>
